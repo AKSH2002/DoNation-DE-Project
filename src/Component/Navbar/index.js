@@ -15,7 +15,8 @@ import Logout from '@mui/icons-material/Logout';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Paper from '@mui/material/Paper';
-import AppBar from '@mui/material/AppBar'
+import AppBar from '@mui/material/AppBar';
+// import { Nav, NavItem, NavLink } from 'reactstrap';
 
 import './Navbar.css'
 
@@ -79,7 +80,7 @@ export default function Navbar() {
             <AppBar sx={{backgroundColor:'white'}}>
                 <nav>
                     <a href='/'>
-                        <img id='logo' src={process.env.PUBLIC_URL + '/assets/logo.png'} alt="logo" />
+                        <img id='logo' src={process.env.PUBLIC_URL + '/assets/logo11.jpg'} alt="logo" />
                     </a>
                     <div id="mySidenav" className='sidenav'>
                       {LoggedIn ? (
@@ -154,8 +155,15 @@ export default function Navbar() {
                         // <button id='logout' onClick={(e) => {AuthenticationService.logout(); window.location.reload();}}>SignOut</button>
                       ) : (
                         <>
-                          <button onClick={(e) => {window.open('donors/signup', '_self');}}>New Donor</button>
+                        <a className="nav_links" onClick={(e) => {window.open('donors/signup', '_self');}}>Register</a>
                           <button onClick={(e) => {window.open('/signin', '_self');}}>Login</button>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>Home</a>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>Services</a>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>Gallery</a>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>For Blood Bank</a>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>About Us</a>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>Contact Us</a>
+                          <a className="nav_links" onClick={(e) => {window.open();}}>Help</a>
                         </>
                       )}
                     </div>

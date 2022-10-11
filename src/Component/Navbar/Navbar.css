@@ -6,12 +6,23 @@ nav{
     text-align: center;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
+    background-color: #ff3739;
+}
+.nav_links{
+    margin : 0.7em;
+    font-size:large;
+    font-weight: 600;
+
+}
+
+.nav_links:hover{
+    transition: transform .2s;
+    cursor: pointer;
 }
 
 #logo{
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 70px;
 }
 
 .sidenav{
@@ -31,13 +42,13 @@ nav{
     background-color: transparent;
 }
 
-#logout, .sidenav button:nth-of-type(2){
-    color: whitesmoke;
+#logout, .sidenav button:nth-of-type(1){
+    color: #ed0000;
     border: none;
-    background-color: #ea0000;
+    background-color: white;
 }
 
-.sidenav button:nth-of-type(1):hover{
+.sidenav button:nth-of-type(0):hover{
     background-color: #ea000017;
 }
 

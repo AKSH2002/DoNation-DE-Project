@@ -1,4 +1,5 @@
 import './Footer.css'
+import { Link } from '@mui/material/Link';
 
 export default function Footer() {
     return (
@@ -6,7 +7,7 @@ export default function Footer() {
             <div className='footersec' id='upfooter'>
                 <img src={process.env.PUBLIC_URL + '/assets/logo2.png'} alt="logo" style={{width:"100px", height:"30px"}}/>
                 <section>
-                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-facebook" ></i>
                     <i class="fab fa-instagram"></i>
                     <i class="fas fa-at"></i>
                     <i class="fab fa-telegram"></i>

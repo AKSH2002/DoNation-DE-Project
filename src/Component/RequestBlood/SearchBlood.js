@@ -142,7 +142,7 @@ export default function SearchBlood() {
 		city:"",
 		pincode:"",
 	});
-	const BloodTypes = [ 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+	const BloodTypes = [ 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'Bombay'];
 
 	const [selectedRows, setSelectedRows] = useState([]);
 	const prevSelectedRows = useRef(selectedRows);

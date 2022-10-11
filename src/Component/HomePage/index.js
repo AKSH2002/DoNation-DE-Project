@@ -36,7 +36,7 @@ export const Header = () => {
 				<section className='serviceBtn'>
 					<button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/>
 					<button>Post Blood Request &nbsp; &#10095;</button><br/>
-					{/* <button>Service Organisation (Comming Soon)</button><br/> */}
+					<button>Service Organisation (Comming Soon)</button><br/>
 				</section>
 			</div>
 			<div className='head_Img'>
@@ -118,7 +118,7 @@ export const Contact = () => {
 					<span>Join Us</span><br/>
 					Together We Can Make World More Health & Better
 				</p>
-				<a href='mailto: blood.donor@mail.com' rel="noopener noreferrer">Contact Us</a>
+				<a href='mailto: binalvasoya2003@gmail.com' rel="noopener noreferrer">Contact Us</a>
 			</div>
 		</>
 	);
