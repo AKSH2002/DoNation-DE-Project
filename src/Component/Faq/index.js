@@ -31,7 +31,7 @@ export default function FAQ() {
               <ul>
                 <li>You will complete donor registration, which includes information such as your name, address, phone number, and donor identification number (if you have one).</li>
                 <li>You will have your temperature, hemoglobin, blood pressure and pulse checked.</li>
-                <li>They will cleanse an area on your arm and insert a brand–new, sterile needle for the blood draw.</li>
+                <li>They will cleanse an area on your arm and insert a brand-new, sterile needle for the blood draw.</li>
                 <li>After donation you will spend 10-15 minutes enjoying refreshments to allow your body time to adjust to the slight decrease in fluid volume.</li>
               </ul>
               Enjoy the feeling of accomplishment knowing that you have helped to save lives. Your gift of blood may help up to three people.
