@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter , Route, Switch } from 'react-router-dom';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import SearchBlood from "./Component/RequestBlood/SearchBlood";
 import RequestForm from './Component/RequestBlood/RequestForm';
 import { Header, Info } from "./Component/HomePage";
@@ -15,20 +16,22 @@ import Footer from './Component/Footer';
 import './App.css';
 import Navbar from './Component/Navbar';
 
+
 function App() {
   return (
 	  <>
+	  <BrowserRouter>
 	  <Navbar />
-      <Router>
+      {/* <Router> */}
         <Switch>
 			<Route path='/' exact>
 				<Header />
 				<Info />
 			</Route>
-			<Route path='/loading' exact component={Loading}/>
+			<Route path='/loaging' exact component={Loading}/>
 			<Route path='/signin' exact component={SignIn}/>
-			<Route path='/donors/signup' exact component={SignUp}/>
-			<Route path='/user/signup' exact component={UserSignUp}/>
+			<Route path='/donors-signup' exact component={SignUp}/>
+			<Route path='/user-signup' exact component={UserSignUp}/>
 			<Route path='/search-for-blood' exact component={SearchBlood}/>
 			<Route path='/registration/verification/:token' exact component={VerifyAccount}/>
 			<Route path='/about' exact component={About}/>
@@ -36,8 +39,9 @@ function App() {
 			<AuthenticatedRoute path='/dashboard' exact component={Dashboard} />
 			<AuthenticatedRoute path='/dashboard/settings' exact component={userSetting} />
         </Switch>
-      </Router>
+      {/* </Router> */}
 	  <Footer/>
+	  </BrowserRouter>
     </>
   );
 }

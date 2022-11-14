@@ -1,4 +1,5 @@
 import './Footer.css'
+import {Link} from 'react-router-dom'
 // import { Link } from '@mui/material/Link';
 
 export default function Footer() {
@@ -17,10 +18,10 @@ export default function Footer() {
             <div className='footersec' id='downfooter'>
                 <p>© BLOOD-DONORS 2022. We love our users!</p>
                 <section>
-                    <a href=" ">Privacy & Policies</a>
-                    <a href=" ">Terms & Conditions</a>
-                    <a href="/about">About Us</a>
-                    <a href="/#contact">Contact Us</a>
+                    <Link to="#">Privacy & Policies</Link>
+                    <Link to="#">Terms & Conditions</Link>
+                    <Link to="about">About Us</Link>
+                    <Link to="about">Contact Us</Link>
                 </section>
             </div>
         </div>

@@ -16,6 +16,7 @@ import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Paper from '@mui/material/Paper';
 import AppBar from '@mui/material/AppBar';
+import {Link} from 'react-router-dom'
 // import { Nav, NavItem, NavLink } from 'reactstrap';
 
 import './Navbar.css'
@@ -44,10 +45,11 @@ function HideOnScroll(props) {
 export default function Navbar() {
 
   const [userName, setuserName] = useState(UserService.getUsername());
-
+  
   const [LoggedIn, setLoggedIn] = useState(false)
   const [useranchorEl, setuserAnchorEl] = useState(null);
   const openUserDropdown = Boolean(useranchorEl);
+  
 
   const handleDropdownClick = (event) => {
     setuserAnchorEl(event.currentTarget);
@@ -79,9 +81,9 @@ export default function Navbar() {
         <HideOnScroll>
             <AppBar sx={{backgroundColor:'white'}}>
                 <nav>
-                    <a href='/'>
+                    <Link href='/'>
                         <img id='logo' src={process.env.PUBLIC_URL + '/assets/logo11.jpg'} alt="logo" />
-                    </a>
+                    </Link>
                     <div id="mySidenav" className='sidenav'>
                       {LoggedIn ? (
                         <Stack direction="row" spacing={7} justifyContent="center" alignItems="center">
@@ -155,15 +157,17 @@ export default function Navbar() {
                         // <button id='logout' onClick={(e) => {AuthenticationService.logout(); window.location.reload();}}>SignOut</button>
                       ) : (
                         <>
-                        <a className="nav_links" onClick={(e) => {window.open('donors/signup', '_self');}}>Register</a>
-                          <button onClick={(e) => {window.open('/signin', '_self');}}>Login</button>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>Home</a>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>Services</a>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>Gallery</a>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>For Blood Bank</a>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>About Us</a>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>Contact Us</a>
-                          <a className="nav_links" onClick={(e) => {window.open();}}>Help</a>
+                        {/* new */}
+                        <Link className="nav_links" to='donors-signup'> Register</Link>
+                          {/* <button onClick={(e) => {window.open('/signin', '_self');}}>Login</button> */}
+                          <Link className="nav_links" to='signin'>Log In</Link>
+                          <Link className="nav_links" to='/'>Home</Link>
+                          <Link className="nav_links" >Gallery</Link>
+                          <Link className="nav_links" >For Blood Bank</Link>
+                          <Link className="nav_links" >For Hospitals</Link>
+                          <Link className="nav_links" to='about'>About Us</Link>
+                          <Link className="nav_links" to="about">Contact Us</Link>
+                          <Link className="nav_links" >Help</Link>
                         </>
                       )}
                     </div>

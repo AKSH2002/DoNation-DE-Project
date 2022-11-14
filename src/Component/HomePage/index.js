@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 import Faq from '../Faq';
 import { ShowRequestPost } from '../PostBloodRequest/ShowRequestPost';
 import './Home.css'
@@ -96,14 +98,105 @@ export const Info = () => {
 					<div style={{textAlign: 'center'}}>
 						<button id='readMore'>READ MORE</button>
 					</div>
-
-					{/* Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+						{/* Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
 					odit. */}
 				</div>
 				<div>
 					<ShowRequestPost />
 				</div>
 			</div>
+	<div className="sevices">
+		<h2>Services Provide by blood camps</h2>
+        <hr />
+        <p>The health and safety of the donor as well as the recipient must be safeguarded.</p>
+	
+	<CardGroup>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+        </Card.Body>
+        {/* <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer> */}
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This card has supporting text below as a natural lead-in to
+            additional content.{' '}
+          </Card.Text>
+        </Card.Body>
+        {/* <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer> */}
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+        {/* <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer> */}
+      </Card>
+    </CardGroup>
+
+	<CardGroup>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This card has supporting text below as a natural lead-in to
+            additional content.{' '}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+      <Card>
+        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Body>
+          <Card.Title>Card title</Card.Title>
+          <Card.Text>
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This card has even longer content than the
+            first to show that equal height action.
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last updated 3 mins ago</small>
+        </Card.Footer>
+      </Card>
+    </CardGroup>
+	</div>
+				
 			<Faq />
 			<div id='contact'>{Contact()}</div>
 		</>
