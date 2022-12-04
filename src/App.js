@@ -33,7 +33,7 @@ function App() {
 			<Route path='/donors-signup' exact component={SignUp}/>
 			<Route path='/user-signup' exact component={UserSignUp}/>
 			<Route path='/search-for-blood' exact component={SearchBlood}/>
-			<Route path='/registration/verification/:token' exact component={VerifyAccount}/>
+			<Route path='/registration-verification/:token' exact component={VerifyAccount}/>
 			<Route path='/about' exact component={About}/>
 			<AuthenticatedRoute path='/send-request' exact component={RequestForm}/>
 			<AuthenticatedRoute path='/dashboard' exact component={Dashboard} />
