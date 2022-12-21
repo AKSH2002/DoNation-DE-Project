@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import PropTypes from 'prop-types';
 import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -30,26 +30,34 @@ function stringAvatar(name) {
 function HideOnScroll(props) {
     const { children } = props;
     const trigger = useScrollTrigger();
-  
+
     return (
       <Slide appear={false} direction="down" in={!trigger}>
         {children}
       </Slide>
     );
   }
-  
+
   HideOnScroll.propTypes = {
     children: PropTypes.element.isRequired,
   };
 
 export default function Navbar() {
 
+  const goToTop = () => {
+    window.scrollTo({
+        top: 1100,
+        behavior: "smooth",
+    });
+  };
+
+
   const [userName, setuserName] = useState(UserService.getUsername());
-  
+
   const [LoggedIn, setLoggedIn] = useState(false)
   const [useranchorEl, setuserAnchorEl] = useState(null);
   const openUserDropdown = Boolean(useranchorEl);
-  
+
 
   const handleDropdownClick = (event) => {
     setuserAnchorEl(event.currentTarget);
@@ -74,7 +82,7 @@ export default function Navbar() {
       if (loggedIn) setLoggedIn(true);
     })();
   }, [LoggedIn]);
-  
+
 
 
     return (
@@ -118,7 +126,7 @@ export default function Navbar() {
                             </MenuItem>
                           </Menu>
 
-                          
+
                           <Stack id="user-button" aria-controls={openUserDropdown ? 'user-menu' : undefined} aria-haspopup="true" aria-expanded={openUserDropdown ? 'true' : undefined} onClick={handleDropdownClick} direction="row" spacing={1} sx={{cursor:'pointer'}} title="Account settings">
                             <Avatar sx={{ width: 40, height: 40, bgcolor:'#c6414c' }} {...stringAvatar(userName)} />
                             <Paper elevation={0} sx={{display:"flex", justifyContent:"center", alignItems:"center", textAlign:"center", verticalAlign:"middle", fontSize:'17px'}}>
@@ -158,16 +166,14 @@ export default function Navbar() {
                       ) : (
                         <>
                         {/* new */}
-                        <Link className="nav_links" to='donors-signup'> Register</Link>
+                        <Link className="nav_links clr_chng hover-underline-animation" to='donors-signup' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}> Register</Link>
                           {/* <button onClick={(e) => {window.open('/signin', '_self');}}>Login</button> */}
-                          <Link className="nav_links" to='signin'>Log In</Link>
-                          <Link className="nav_links" to='/'>Home</Link>
-                          <Link className="nav_links" >Gallery</Link>
-                          <Link className="nav_links" >For Blood Bank</Link>
-                          <Link className="nav_links" >For Hospitals</Link>
-                          <Link className="nav_links" to='about'>About Us</Link>
-                          <Link className="nav_links" to="about">Contact Us</Link>
-                          <Link className="nav_links" >Help</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='signin' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Log In</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='/' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Home</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='/' onClick={goToTop}>Diamonds</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" >Provide Blood</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" >Get Blood</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='about' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>About Us</Link>
                         </>
                       )}
                     </div>

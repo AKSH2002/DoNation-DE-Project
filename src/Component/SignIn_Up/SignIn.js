@@ -197,7 +197,7 @@ export default function SignIn() {
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link href="/donors/signup" variant="body2" color="#c6414c">
+                    <Link href="/donors-signup" variant="body2" color="#c6414c">
                       Don't have an account? Sign Up
                     </Link>
                   </Grid>
