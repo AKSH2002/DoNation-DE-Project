@@ -20,8 +20,7 @@ export default function Footer() {
                 <section>
                     <Link to="#">Privacy & Policies</Link>
                     <Link to="#">Terms & Conditions</Link>
-                    <Link to="about">About Us</Link>
-                    <Link to="about">Contact Us</Link>
+                    <Link to="about" onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Contact Us</Link>
                 </section>
             </div>
         </div>

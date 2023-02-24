@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useState, useRef } from 'react';
-import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
+// import Card from 'react-bootstrap/Card';
+// import CardGroup from 'react-bootstrap/CardGroup';
 import Faq from '../Faq';
 import { ShowRequestPost } from '../PostBloodRequest/ShowRequestPost';
+import Navbar from '../Navbar';
 import './Home.css'
 
 export const Header = () => {
@@ -38,7 +39,7 @@ export const Header = () => {
 				<section className='serviceBtn'>
 					<button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/>
 					<button>Post Blood Request &nbsp; &#10095;</button><br/>
-					<button>Service Organisation (Comming Soon)</button><br/>
+					{/* <button>Service Organisation (Comming Soon)</button><br/> */}
 				</section>
 			</div>
 			<div className='head_Img'>
@@ -91,7 +92,7 @@ export const Info = () => {
 								<img src={process.env.PUBLIC_URL + '/assets/fact4.png'} alt="Fact" />
 							</div>
 							<p>
-								Globally arround 85 million blood components are transfused in a given year. 
+								Globally arround 85 million blood components are transfused in a given year.
 							</p>
 						</section>
 					</div>
@@ -105,11 +106,18 @@ export const Info = () => {
 					<ShowRequestPost />
 				</div>
 			</div>
+<<<<<<< HEAD
 
 
 			<hr />
 			<br />
 			<div className="master_wrap">
+=======
+			<hr />
+			<h2 align="center">Our Diamonds</h2>
+			<br />
+			<div className="master_wrap" id="diamond_s">
+>>>>>>> cc4350808dee70c4f3a6a9d9391b800eec835a41
 			<div className="wrapper">
             	<div className="card1">
                 	<img src="https://media.istockphoto.com/id/538881385/photo/man-giving-blood-donation.jpg?s=612x612&w=0&k=20&c=AeLsTncplqOxI6pTv0N3fUUS90_2B-Yuw0FF3lUyHX8=" />
@@ -130,6 +138,7 @@ export const Info = () => {
            	 	</div>
         	</div>
 			</div>
+<<<<<<< HEAD
 
 
 	<div className="sevices">
@@ -179,51 +188,114 @@ export const Info = () => {
         </Card.Footer> */}
       </Card>
     </CardGroup>
+=======
+        <hr />
+	<div className="sevices">
+		<h2 align="center">Services Provide by blood camps</h2>
+        <p align="center" >The health and safety of the donor as well as the recipient must be safeguarded.</p>
 
-	<CardGroup>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{' '}
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-    </CardGroup>
+		<div class="s_crd">
+ <div className="flip-main">
+   <div className="container_s">
+      <div className="row_s">
+          {/* <!-- flip card start --> */}
+          <div className="flip-card">
+             <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img className="s_img" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-ovmMryhw5XmiXSh4-RLjlG8V1KXPUz5-8bvN2TQDZN1AF7Ae" alt="flip-card" />
+                 </div>
+                 <div className="flip-card-back">
+                    <div className="text">
+                       <h3>	24 x 7 Ambulance Service</h3>
+                       <p>For emergency situations, we are present near you to save lives from death.</p>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {/* <!-- flip card end -->
+          <!-- flip card start --> */}
+          <div className="flip-card">
+             <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img className="s_img" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCPtM2p4qxvh9hDdpkHf7oF9S_ymxDgIg7YDOuoy4vOawzMmjl" alt="flip-card" />
+                 </div>
+                 <div className="flip-card-back">
+                    <div className="text">
+                       <h3>Snacks</h3>
+                       <p>We provide proper snacks to visitors & their companion. We take care of our users.</p>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {/* <!-- flip card end -->
+          <!-- flip card start --> */}
+          <div className="flip-card">
+             <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img className="s_img" src="https://pbs.twimg.com/media/E32VtKnX0AE-q_K?format=jpg&name=900x900" alt="flip-card" />
+                 </div>
+                 <div className="flip-card-back">
+                    <div className="text">
+                       <h3>Blood Typing Game</h3>
+                       <p>To spread awarness on blood donation, user can play a basic logic game in our site...</p>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {/* <!-- flip card end -->
+          <!-- flip card start --> */}
+          <div className="flip-card">
+             <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img className="s_img" src="https://rukminim1.flixcart.com/image/416/416/l47cu4w0/mug/e/j/a/world-blood-donor-day-printed-mug-11oz-300-1-attirebazar-original-imagf5t8gwjmzxyh.jpeg?q=70" alt="flip-card" />
+                 </div>
+                 <div className="flip-card-back">
+                    <div className="text">
+                       <h3>Blood Donor Return Gift</h3>
+                       <p>We encourage our donor's by providing return back gifts which could be used in their daily life.</p>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {/* <!-- flip card end -->
+          <!-- flip card start --> */}
+          <div className="flip-card">
+             <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img className="s_img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRD0SKzOQk2uujNuJDnnypWOwB8mZQLOL0UU5GWt8XBzAkZBwQ1" alt="flip-card" />
+                 </div>
+                 <div className="flip-card-back">
+                    <div className="text">
+                       <h3>Certification</h3>
+                       <p>Certification of appreciation is also provided to user, to have a good memory of helping others.</p>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {/* <!-- flip card end -->
+          <!-- flip card start --> */}
+          <div className="flip-card">
+             <div className="flip-card-inner">
+                 <div className="flip-card-front">
+                    <img className="s_img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQklsUxp2B2jhoGB4CqNl2YZyoghxNxLuEft9GL00yu6BwM-EGO" alt="flip-card" />
+                 </div>
+                 <div className="flip-card-back">
+                    <div className="text">
+                       <h3>Blood Reports</h3>
+                       <p>We deliver free blood reports to all donors. It include test like thelisma test, Electrolyte test, etc</p>
+                    </div>
+                 </div>
+             </div>
+          </div>
+          {/* <!-- flip card end --> */}
+    </div>
+   </div>
+ </div>
+</div>
+>>>>>>> cc4350808dee70c4f3a6a9d9391b800eec835a41
+
 	</div>
-				
+
 			<Faq />
 			<div id='contact'>{Contact()}</div>
 		</>
@@ -238,7 +310,7 @@ export const Contact = () => {
 					<span>Join Us</span><br/>
 					Together We Can Make World More Health & Better
 				</p>
-				<a href='mailto: binalvasoya2003@gmail.com' rel="noopener noreferrer">Contact Us</a>
+				<a href='mailto: binalvasoya2003@gmail.com' rel="noopener noreferrer">Write us a Mail</a>
 			</div>
 		</>
 	);

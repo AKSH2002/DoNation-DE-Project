@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 nav{
     width: auto;
     height: fit-content;
@@ -9,15 +11,17 @@ nav{
     background-color: #ff3739;
 }
 .nav_links{
-    margin : 0.7em;
-    font-size:large;
+    text-decoration: none;
+    color: white;
+    margin : 0.5em;
+    font-size:medium;
     font-weight: 600;
 
 }
-
 .nav_links:hover{
-    transition: transform .2s;
     cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.25s ease-out;
 }
 
 #logo{
@@ -34,7 +38,7 @@ nav{
     padding: 6px 25px;
     margin: 4px 10px 0;
     cursor: pointer;
-    color: #ea0000;
+    color: aqua;
     font-weight: bold;
     border: 1px solid #ed0000;
     box-sizing: border-box;
@@ -43,16 +47,20 @@ nav{
 }
 
 #logout, .sidenav button:nth-of-type(1){
-    color: #ed0000;
+    color: aqua;
     border: none;
-    background-color: white;
 }
 
 .sidenav button:nth-of-type(0):hover{
     background-color: #ea000017;
 }
 
-
+.clr_chng{transition: color 1s;}
+.clr_chng:hover{
+    color: #000000;
+    text-shadow: 2px 2px 5px #ff003c;
+    /* text-shadow: rgba(7, 7, 242, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+}
 
 .auth_menu{
     text-align: center;
@@ -77,3 +85,25 @@ nav{
     color: #c6414c;
 }
 
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+  }
+
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
