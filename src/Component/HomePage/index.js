@@ -106,18 +106,10 @@ export const Info = () => {
 					<ShowRequestPost />
 				</div>
 			</div>
-<<<<<<< HEAD
-
-
-			<hr />
-			<br />
-			<div className="master_wrap">
-=======
 			<hr />
 			<h2 align="center">Our Diamonds</h2>
 			<br />
 			<div className="master_wrap" id="diamond_s">
->>>>>>> cc4350808dee70c4f3a6a9d9391b800eec835a41
 			<div className="wrapper">
             	<div className="card1">
                 	<img src="https://media.istockphoto.com/id/538881385/photo/man-giving-blood-donation.jpg?s=612x612&w=0&k=20&c=AeLsTncplqOxI6pTv0N3fUUS90_2B-Yuw0FF3lUyHX8=" />
@@ -138,57 +130,6 @@ export const Info = () => {
            	 	</div>
         	</div>
 			</div>
-<<<<<<< HEAD
-
-
-	<div className="sevices">
-		<h2 align="center">Services Provide by blood camps</h2>
-        <hr />
-        <p align="center" >The health and safety of the donor as well as the recipient must be safeguarded.</p>
-	
-	<CardGroup>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-        {/* <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer> */}
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{' '}
-          </Card.Text>
-        </Card.Body>
-        {/* <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer> */}
-      </Card>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </Card.Text>
-        </Card.Body>
-        {/* <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer> */}
-      </Card>
-    </CardGroup>
-=======
         <hr />
 	<div className="sevices">
 		<h2 align="center">Services Provide by blood camps</h2>
@@ -292,7 +233,6 @@ export const Info = () => {
    </div>
  </div>
 </div>
->>>>>>> cc4350808dee70c4f3a6a9d9391b800eec835a41
 
 	</div>
 
