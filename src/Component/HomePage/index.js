@@ -6,11 +6,16 @@ import Faq from '../Faq';
 import { ShowRequestPost } from '../PostBloodRequest/ShowRequestPost';
 import Navbar from '../Navbar';
 import './Home.css'
+import { useHistory } from "react-router-dom";
 
 export const Header = () => {
 
 	const header_height = useRef(null);
+	let history = useHistory();
 	const [Height, setHeight] = useState({});
+	const newChange = () =>{
+		history.push("/search-for-blood");
+	}
 	useEffect(() => {
 		const height = header_height.current.offsetHeight + 300;
 		setHeight({
@@ -37,7 +42,8 @@ export const Header = () => {
 					<span>"Your greatness is <br/>not what you have. <br />it's what you give"<br/></span>
 				</p>
 				<section className='serviceBtn'>
-					<button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/>
+					{/* <button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/> */}
+					<button onClick={newChange}>Find A Blood Donor &nbsp; &#10095;</button><br/>
 					<button>Post Blood Request &nbsp; &#10095;</button><br/>
 					{/* <button>Service Organisation (Comming Soon)</button><br/> */}
 				</section>
