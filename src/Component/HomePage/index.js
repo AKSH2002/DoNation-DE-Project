@@ -7,6 +7,7 @@ import { ShowRequestPost } from '../PostBloodRequest/ShowRequestPost';
 import Navbar from '../Navbar';
 import './Home.css'
 import { useHistory } from "react-router-dom";
+import FeedbackForm from '../FeedbackForm/FeedbackForm';
 
 export const Header = () => {
 
@@ -243,6 +244,7 @@ export const Info = () => {
 	</div>
 
 			<Faq />
+			<FeedbackForm/>
 			<div id='contact'>{Contact()}</div>
 		</>
 	);
@@ -253,6 +255,7 @@ export const Contact = () => {
 		<>
 			<div className="contact" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/contact_bg.png'})`}}>
 				<p>
+					
 					<span>Join Us</span><br/>
 					Together We Can Make World More Health & Better
 				</p>
