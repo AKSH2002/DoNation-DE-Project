@@ -35,7 +35,7 @@ class FeedbackForm extends Component {
         <div className="countainers" id="faq" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/faq_bg.jpg'})`}}>
       {/* <div class="countainer">       */}
         <div class="headings">
-            <h2 class ="hea">FeedBack</h2>
+            <h2 class ="hea">FeedBack Form</h2>
         </div>
       <form onSubmit={this.handleSubmit}>
         <label>

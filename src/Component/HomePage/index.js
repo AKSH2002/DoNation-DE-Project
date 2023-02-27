@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 // import CardGroup from 'react-bootstrap/CardGroup';
 import Faq from '../Faq';
 import { ShowRequestPost } from '../PostBloodRequest/ShowRequestPost';
-import Navbar from '../Navbar';
+// import Navbar from '../Navbar';
 import './Home.css'
 import { useHistory } from "react-router-dom";
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
@@ -119,17 +119,17 @@ export const Info = () => {
 			<div className="master_wrap" id="diamond_s">
 			<div className="wrapper">
             	<div className="card1">
-                	<img src="https://media.istockphoto.com/id/538881385/photo/man-giving-blood-donation.jpg?s=612x612&w=0&k=20&c=AeLsTncplqOxI6pTv0N3fUUS90_2B-Yuw0FF3lUyHX8=" />
+                	<img src="/assets/male blood donor.jpg" alt="no img" />
                 	<div className="info1">
                     	<h1>Super-Man</h1>
                     	<p>Meet Abhay Patel, who donated 30 blood packet which are highest in year 2k22 !</p>
                		</div>
             	</div>
 				<div className="card2">
-					<img src="https://scontent.famd15-1.fna.fbcdn.net/v/t1.6435-9/138577185_848416985728628_5020793669632080597_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_ohc=GbOGyx_GNpoAX-ImXFo&_nc_ht=scontent.famd15-1.fna&oh=00_AfCWxKPmK8EWuvMC9X3zkwuEOOKujcEOsLvOTblaaHbwcg&oe=63B6EBCB"/>
+					<img src="/assets/blood table.png" alt="no img"/>
 				</div>
             	<div className="card1">
-                	<img src="https://media.istockphoto.com/id/1315395944/photo/experienced-phlebotomist-preparing-a-woman-for-blood-draw.jpg?s=612x612&w=0&k=20&c=MX1sfSztBJIiCW0wOqxDWxLuXWOxrlTvOO6azfF2buY=" />
+                	<img src="/assets/women blood donor.jpg" alt="no img" />
                 	<div className="info1">
                     	<h1>Super-Women</h1>
                     	<p>Beauty with Brains ! Maya Patel, who donated 38 blood packet which are highest in year 2k22 !</p>
@@ -150,7 +150,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-ovmMryhw5XmiXSh4-RLjlG8V1KXPUz5-8bvN2TQDZN1AF7Ae" alt="flip-card" />
+                    <img className="s_img" src="/assets/ambulance.jpg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -165,7 +165,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCPtM2p4qxvh9hDdpkHf7oF9S_ymxDgIg7YDOuoy4vOawzMmjl" alt="flip-card" />
+                    <img className="s_img" src="/assets/snacks.jpg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -180,7 +180,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="https://pbs.twimg.com/media/E32VtKnX0AE-q_K?format=jpg&name=900x900" alt="flip-card" />
+                    <img className="s_img" src="/assets/blood typing game.jpeg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -195,7 +195,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="https://rukminim1.flixcart.com/image/416/416/l47cu4w0/mug/e/j/a/world-blood-donor-day-printed-mug-11oz-300-1-attirebazar-original-imagf5t8gwjmzxyh.jpeg?q=70" alt="flip-card" />
+                    <img className="s_img" src="/assets/donor gift.png" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -210,7 +210,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRD0SKzOQk2uujNuJDnnypWOwB8mZQLOL0UU5GWt8XBzAkZBwQ1" alt="flip-card" />
+                    <img className="s_img" src="/assets/certificate.jpg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -225,7 +225,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQklsUxp2B2jhoGB4CqNl2YZyoghxNxLuEft9GL00yu6BwM-EGO" alt="flip-card" />
+                    <img className="s_img" src="/assets/blood test.jpg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -240,10 +240,11 @@ export const Info = () => {
    </div>
  </div>
 </div>
-
+<hr />
 	</div>
 
 			<Faq />
+			<hr />
 			<FeedbackForm/>
 			<div id='contact'>{Contact()}</div>
 		</>

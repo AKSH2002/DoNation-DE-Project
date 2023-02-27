@@ -17,10 +17,10 @@ import PasswordTwoToneIcon from "@mui/icons-material/PasswordTwoTone";
 import AbcTwoToneIcon from "@mui/icons-material/AbcTwoTone";
 import InputAdornment from "@mui/material/InputAdornment";
 import validator from "validator";
-import { app } from "../../firebase";
+// import { app } from "../../firebase";
 import {
   getAuth,
-  signInWithEmailAndPassword,
+  // signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 
@@ -197,6 +197,7 @@ export default function SignIn() {
                     </Link>
                   </Grid>
                   <Grid item>
+                  <br />
                     <Link href="/donors-signup" variant="body2" color="#c6414c">
                       Don't have an account? Sign Up
                     </Link>

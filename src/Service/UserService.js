@@ -103,29 +103,29 @@ class UserService{
         });;
 
         // console.log(donorLocation);
-
-
-        console.log("Donor:" + lat1 + ", " + lat2);
+        
+        
         
         var lat2 = sessionStorage.getItem(USER_LOCATION_LAT);
         var lon2 = sessionStorage.getItem(USER_LOCATION_LON);
-
+        
         console.log("App User:" + lat2 + ", " + lon2);
-
-
+        
+        
         var R = 6371; // km
         var dLat = toRad(lat2-lat1);
         var dLon = toRad(lon2-lon1);
         var lat1 = toRad(lat1);
         var lat2 = toRad(lat2);
-
+        
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
         var d = R * c;
+        console.log("Donor:" + lat1 + ", " + lat2);
         console.log(d);
         console.log(d.toFixed(1));
         return d.toFixed(1);
-
+        
         // Converts numeric degrees to radians
         function toRad(Value) 
         {
