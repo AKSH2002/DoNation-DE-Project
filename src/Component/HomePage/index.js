@@ -8,7 +8,7 @@ import { ShowRequestPost } from '../PostBloodRequest/ShowRequestPost';
 import './Home.css'
 import { useHistory } from "react-router-dom";
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
-
+import GoogleMap from '../GoogleMap/GoogleMap';
 export const Header = () => {
 
 	const header_height = useRef(null);
@@ -112,6 +112,7 @@ export const Info = () => {
 				<div>
 					<ShowRequestPost />
 				</div>
+				 
 			</div>
 			<hr />
 			<h2 align="center">Our Diamonds</h2>
@@ -245,7 +246,9 @@ export const Info = () => {
 
 			<Faq />
 			<hr />
+			<GoogleMap from={{lat: 23.596952669460926, lng: 72.38002810670397}} to={{lat: 23.23782062216229, lng: 72.54850214451702}}/>
 			<FeedbackForm/>
+			
 			<div id='contact'>{Contact()}</div>
 		</>
 	);
