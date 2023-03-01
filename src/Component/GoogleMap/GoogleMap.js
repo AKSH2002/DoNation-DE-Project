@@ -35,7 +35,7 @@ class GoogleMap extends Component {
     // Pass the directions request to the directions service.
     const directionsService = new google.maps.DirectionsService();
     directionsService.route(request, function(response, status) {
-      if (status == 'OK') {
+      if (status === 'OK') {
         // Display the route on the map.
         directionsDisplay.setDirections(response);
       }
@@ -45,6 +45,8 @@ class GoogleMap extends Component {
 
   render() {
     return <div>
+    <h2 className='headin'>Google map</h2>
+    <br />
       <Script
         url="https://maps.googleapis.com/maps/api/js?key="
         onLoad={this.initMap.bind(this)}

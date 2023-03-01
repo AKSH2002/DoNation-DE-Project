@@ -4,8 +4,8 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import './About.css';
-import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
+// import Typography from '@mui/material/Typography';
+// import CardMedia from '@mui/material/CardMedia';
 
 
 export default function About() {
@@ -27,15 +27,17 @@ export default function About() {
               <Card sx={{ width: 275, backgroundColor:'#c6414c', marginTop:'50px'}}>
                 <CardContent>
                   <img className='WAWimg' src={process.env.PUBLIC_URL + '/assets/mission.png'} alt='mission'/>
-                  <h2>MISSION</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+                  <h3>MISSION</h3>
+                  <p>To enhance the well being of patients in our service area by assuring a reliable and economical supply of the safest possible blood, by providing innovative hemotherapy services, and by promoting research and education programs in transfusion medicine.</p>
                 </CardContent>
               </Card>
               <Card sx={{ width: 275, backgroundColor:'#c6414c', marginTop:'50px'}}>
                 <CardContent>
                   <img className='WAWimg' src={process.env.PUBLIC_URL + '/assets/vision.png'} alt='mission'/>
-                  <h2>VISION</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+                  <h3>VISION</h3>
+                  <p>To pave way for a safer and better tommorrow.
+Safer, by bringing blood donors and those in need to a common platform.
+Better, by providing every person what he/she deserves the most, best education.</p>
                 </CardContent>
               </Card>
             </Grid>
@@ -54,9 +56,7 @@ export default function About() {
                 />
                 <section>
                   <h4>Geo-Location Search</h4>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt. Neque porro quisquam est.
+                  With the geo-search feature, finding blood donors has become easier than ever. Enter your location and you will be shown the donors available in the closest proximity
                 </section>
               </div>
 
@@ -68,9 +68,7 @@ export default function About() {
                 />
                 <section>
                   <h4>Real Time Connect</h4>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt. Neque porro quisquam est.
+                  No delays in receiving blood anymore. Connect with donors and recipients in real-time
                 </section>
               </div>
 
@@ -82,9 +80,7 @@ export default function About() {
                 />
                 <section>
                   <h4>Notification</h4>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt. Neque porro quisquam est.
+                  Get updates on blood requests so that you are informed the moment a donor is available or a request is made
                 </section>
               </div>
               <div className="card">
@@ -95,9 +91,7 @@ export default function About() {
                 />
                 <section>
                   <h4>User Friendly</h4>
-                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                  aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt. Neque porro quisquam est.
+                  user-friendly website is a page that looks professional and is easy for anyone who visits your website to navigate
                 </section>
               </div>
             </div>
