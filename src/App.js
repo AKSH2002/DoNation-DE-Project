@@ -10,7 +10,7 @@ import Loading from './Component/Loading';
 import VerifyAccount from './Component/VerifyAccount';
 import Dashboard from './Component/Dashboard';
 import userSetting from './Component/Dashboard/Setting';
-import AuthenticatedRoute from './Service/AuthenticatedRoute';
+// import AuthenticatedRoute from './Service/AuthenticatedRoute';
 import About from './Component/About';
 import Footer from './Component/Footer';
 import './App.css';
@@ -35,9 +35,9 @@ function App() {
 			<Route path='/search-for-blood' exact component={SearchBlood}/>
 			<Route path='/registration-verification/:token' exact component={VerifyAccount}/>
 			<Route path='/about' exact component={About}/>
-			<AuthenticatedRoute path='/send-request' exact component={RequestForm}/>
-			<AuthenticatedRoute path='/dashboard' exact component={Dashboard} />
-			<AuthenticatedRoute path='/dashboard/settings' exact component={userSetting} />
+			<Route path='/send-request' exact component={RequestForm}/>
+			<Route path='/dashboard' exact component={Dashboard} />
+			<Route path='/dashboard/settings' exact component={userSetting} />
         </Switch>
       {/* </Router> */}
 	  <Footer/>

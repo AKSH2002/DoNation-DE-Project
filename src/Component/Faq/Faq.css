@@ -50,3 +50,14 @@
 	font-size: 15px;
 	color: #696969;
 }
+
+@media(max-width: 991px){
+	.faqcard hr{
+	/* width: 95px;
+	height: 4px; */
+	margin: 0px auto 20px auto;
+	background-color: #ea0000;
+	opacity: 1;
+	border: none;
+	}
+}

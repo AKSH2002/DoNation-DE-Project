@@ -401,9 +401,14 @@ Wrapper card of men & women
 }
 
 /*responsive*/
+
 @media(max-width: 991px){
   .flip-main .flip-card {
     flex: 0 0 calc(50% - 30px);
+  }
+
+  .head_Img{
+    display: none;
   }
 }
 @media(max-width: 767px){

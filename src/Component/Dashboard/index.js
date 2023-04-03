@@ -3,11 +3,11 @@ import React from 'react';
 import { useState } from "react";
 import SentRequest from './SentRequest';
 import Avatar from '@mui/material/Avatar';
-import Notification from './Notification';
+// import Notification from './Notification';
 import RecivedRequest from './RecivedRequest';
 import UserService from '../../Service/UserService';
 import AuthenticationService from '../../Service/AuthenticationService';
-import FormatQuoteRoundedIcon from '@mui/icons-material/FormatQuoteRounded';
+// import FormatQuoteRoundedIcon from '@mui/ icons-material/FormatQuoteRounded';
 
 
 export default function Dashboard() {
@@ -43,15 +43,15 @@ export default function Dashboard() {
 					</div>
 					<div className='user-card'>
 						<div className='blur-card' style={{filter:`${ roles.length === 2 ? 'none' : 'blur(5px)'}`}}>
-							<div id='card-vector1' style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/Vector_1.png'})`}}></div>
-							<div id='card-vector2' style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/Vector_2.png'})`}}></div>
+							{/* <div id='card-vector1' style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/Vector_1.png'})`}}></div> */}
+							{/* <div id='card-vector2' style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/Vector_2.png'})`}}></div> */}
 							<div className='user-card-details'>
 								<p style={{fontSize:'12px'}}>bronze</p>
 								<p>{userName.toUpperCase()}</p>
 								<p>1234 5678</p>
 								<p>{userBloodGroup}</p>
 							</div>
-							<img className='logo2' src={process.env.PUBLIC_URL + '/assets/logo2.png'}/>
+							{/* <img className='logo2' src={process.env.PUBLIC_URL + '/assets/logo2.png'}/> */}
 						</div>
 						<div id="block-card" style={{display:`${ roles.length === 2 ? 'none' : 'block'}`}}>
 							<h3>BE DONOR</h3>
