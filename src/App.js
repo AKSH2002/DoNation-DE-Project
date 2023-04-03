@@ -15,6 +15,9 @@ import About from './Component/About';
 import Footer from './Component/Footer';
 import './App.css';
 import Navbar from './Component/Navbar';
+import BloodBankRegistrationForm from './Component/Blood Bank Registartion/BloodBankRegistrationForm';
+import HospitalRegistrationForm from './Component/Hospital Registration Form/HospitalRegistrationForm';
+import BloodCampForm from './Component/Blood Camp Form/BloodCampForm';
 
 
 function App() {
@@ -31,8 +34,11 @@ function App() {
 			<Route path='/loaging' exact component={Loading}/>
 			<Route path='/signin' exact component={SignIn}/>
 			<Route path='/donors-signup' exact component={SignUp}/>
+			<Route path='/hospital-signup' exact component={HospitalRegistrationForm}/>
+			<Route path='/blood-bank-signup' exact component={BloodBankRegistrationForm}/>
 			<Route path='/user-signup' exact component={UserSignUp}/>
 			<Route path='/search-for-blood' exact component={SearchBlood}/>
+			<Route path='/blood-camp-registration' exact component={BloodCampForm}/>
 			<Route path='/registration-verification/:token' exact component={VerifyAccount}/>
 			<Route path='/about' exact component={About}/>
 			<Route path='/send-request' exact component={RequestForm}/>

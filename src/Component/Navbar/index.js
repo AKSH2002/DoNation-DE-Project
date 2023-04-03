@@ -171,8 +171,9 @@ export default function Navbar() {
                           <Link className="nav_links clr_chng hover-underline-animation" to='signin' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Log In</Link>
                           <Link className="nav_links clr_chng hover-underline-animation" to='/' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Home</Link>
                           <Link className="nav_links clr_chng hover-underline-animation" to='/' onClick={goToTop}>Diamonds</Link>
-                          <Link className="nav_links clr_chng hover-underline-animation" >Provide Blood</Link>
-                          <Link className="nav_links clr_chng hover-underline-animation" >Get Blood</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='hospital-signup' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>For Hospital</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='blood-camp-registration' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Blood Camp Organisation</Link>
+                          <Link className="nav_links clr_chng hover-underline-animation" to='blood-bank-signup' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>For Blood Bank</Link>
                           <Link className="nav_links clr_chng hover-underline-animation" to='about' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>About Us</Link>
                         </>
                       )}

@@ -114,6 +114,7 @@ export const Info = () => {
 				</div>
 				 
 			</div>
+			
 			<hr />
 			<h2 align="center">Our Diamonds</h2>
 			<br />
