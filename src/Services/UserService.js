@@ -99,7 +99,7 @@ class UserService{
             lat1 = response.candidates[0].location.x;
             lon1 = response.candidates[0].location.y;
             console.log(response.candidates[0].location)
-            // return response.candidates[0].location;     // => { x: -77.036533, y: 38.898719, spatialReference: ... }
+            return response.candidates[0].location;     // => { x: -77.036533, y: 38.898719, spatialReference: ... }
         });;
 
         // console.log(donorLocation);
@@ -115,8 +115,8 @@ class UserService{
         var R = 6371; // km
         var dLat = toRad(lat2-lat1);
         var dLon = toRad(lon2-lon1);
-        var lat1 = toRad(lat1);
-        var lat2 = toRad(lat2);
+        // var lat1 = toRad(lat1);
+        // var lat2 = toRad(lat2);
         
         var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 

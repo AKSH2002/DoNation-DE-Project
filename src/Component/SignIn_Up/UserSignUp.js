@@ -20,7 +20,7 @@ import MuiAlert from '@mui/material/Alert';
 import MenuItem from '@mui/material/MenuItem';
 import PasswordTwoToneIcon from '@mui/icons-material/PasswordTwoTone';
 import React from "react";
-import RegistrationService from "../../Service/RegistrationService";
+import RegistrationService from "../../Services/RegistrationService";
 import Select from '@mui/material/Select';
 import { Snackbar } from "@mui/material";
 import Swal from "sweetalert2";

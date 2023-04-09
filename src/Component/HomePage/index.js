@@ -45,7 +45,7 @@ export const Header = () => {
 				<section className='serviceBtn'>
 					{/* <button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/> */}
 					<button onClick={newChange}>Find A Blood Donor &nbsp; &#10095;</button><br/>
-					<button>Post Blood Request &nbsp; &#10095;</button><br/>
+					<button onClick={(e) => {window.open('/dashboard', '_self');}}>Post Blood Request &nbsp; &#10095;</button><br/>
 					{/* <button>Service Organisation (Comming Soon)</button><br/> */}
 				</section>
 			</div>

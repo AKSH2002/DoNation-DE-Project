@@ -1,12 +1,12 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import AuthenticationService from '../../Service/AuthenticationService';
+import AuthenticationService from '../../Services/AuthenticationService';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Badge from '@mui/material/Badge';
 import Menu from '@mui/material/Menu';
-import UserService from '../../Service/UserService'
+import UserService from '../../Services/UserService'
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Person from '@mui/icons-material/Person';
 import MenuItem from '@mui/material/MenuItem';
@@ -16,8 +16,9 @@ import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import Paper from '@mui/material/Paper';
 import AppBar from '@mui/material/AppBar';
-import {Link} from 'react-router-dom'
-// import { Nav, NavItem, NavLink } from 'reactstrap';
+import {Link} from 'react-router-dom';
+// import CloseIcon from '@mui/icons-material/Close';
+// import MenuIcon from '@mui/icons-material/Menu';
 
 import './Navbar.css'
 
@@ -53,7 +54,7 @@ export default function Navbar() {
 
 
   const [userName, setuserName] = useState(UserService.getUsername());
-
+  // const [sidebar,setsidebar] = useState(false)
   const [LoggedIn, setLoggedIn] = useState(false)
   const [useranchorEl, setuserAnchorEl] = useState(null);
   const openUserDropdown = Boolean(useranchorEl);
@@ -65,6 +66,10 @@ export default function Navbar() {
   const handleDropdownClose = () => {
     setuserAnchorEl(null);
   };
+//   window.addEventListener("scroll",function () {
+//     const header = document.querySelector(".header1");
+//     header.classList.toggle("active", window.screenY > 200);
+// })
 
   const [notificationanchorEl, setnotificationAnchorEl] = useState(null);
   const openNotificationDropdown = Boolean(notificationanchorEl);
@@ -88,7 +93,7 @@ export default function Navbar() {
     return (
         <HideOnScroll>
             <AppBar sx={{backgroundColor:'white'}}>
-                <nav>
+                <nav className='header1'>
                     <Link href='/'>
                         <img id='logo' src={process.env.PUBLIC_URL + '/assets/logo11.jpg'} alt="logo" />
                     </Link>
@@ -165,8 +170,9 @@ export default function Navbar() {
                         // <button id='logout' onClick={(e) => {AuthenticationService.logout(); window.location.reload();}}>SignOut</button>
                       ) : (
                         <>
-                        {/* new */}
-                        <Link className="nav_links clr_chng hover-underline-animation" to='donors-signup' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}> Register</Link>
+                        {/* <div className='nav'> */}
+                            {/* <ul className={sidebar ? "nav_links_sidebar" : "nav_links"} onClick={() => setsidebar(false)}> */}
+                            <Link className="nav_links clr_chng hover-underline-animation" to='donors-signup' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}> Register</Link>
                           {/* <button onClick={(e) => {window.open('/signin', '_self');}}>Login</button> */}
                           <Link className="nav_links clr_chng hover-underline-animation" to='signin' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Log In</Link>
                           <Link className="nav_links clr_chng hover-underline-animation" to='/' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Home</Link>
@@ -175,8 +181,13 @@ export default function Navbar() {
                           <Link className="nav_links clr_chng hover-underline-animation" to='blood-camp-registration' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>Blood Camp Organisation</Link>
                           <Link className="nav_links clr_chng hover-underline-animation" to='blood-bank-signup' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>For Blood Bank</Link>
                           <Link className="nav_links clr_chng hover-underline-animation" to='about' onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'smooth'});}}>About Us</Link>
+                        {/* </ul> */}
+                        {/* </div> */}
                         </>
                       )}
+                        {/* <button className="navbar-items-icon" onClick={() => setsidebar(!sidebar)}>
+                            {sidebar ? <CloseIcon /> : <MenuIcon />}
+                        </button> */}
                     </div>
                 </nav>
             </AppBar>

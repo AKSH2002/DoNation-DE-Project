@@ -32,6 +32,9 @@ const BloodCampForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group top">
+                <div className='bldcmp'>
+                     <label>Blood Camp Registration Form</label>
+                </div>
                 <label htmlFor="organizationName">Organization Name *</label>
                 <input
                     type="text"

@@ -52,11 +52,11 @@ class RequestService{
 
     
     getGeoCode(address){
-        return geocode({ address: address, authentication: authentication});
-    //     .then(response => {
-    //         console.log(response.candidates[0].location)
-    //       return response.candidates[0].location;     // => { x: -77.036533, y: 38.898719, spatialReference: ... }
-    //   })
+        return geocode({ address: address, authentication: authentication})
+        .then(response => {
+            console.log(response.candidates[0].location)
+          return response.candidates[0].location;     // => { x: -77.036533, y: 38.898719, spatialReference: ... }
+      })
     }
 
 

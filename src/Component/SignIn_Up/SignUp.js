@@ -26,7 +26,7 @@ import React from "react";
 import Select from "@mui/material/Select";
 import { Snackbar } from "@mui/material";
 // import Swal from "sweetalert2";
-import State_City_Data from "../../Service/Data";
+import State_City_Data from "../../Services/Data";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import validator from "validator";

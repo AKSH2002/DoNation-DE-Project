@@ -2,10 +2,16 @@
 .form-group {
   margin-bottom: 1rem;
 }
-h2{
+/* h3{
     margin-top: 100px !important;
     padding-left: 14%;
     width: max-content;
+    text-decoration: underline 4px solid red;
+} */
+.bldhsp{
+  text-decoration: underline 4px solid red;
+  font-size: 40px;
+  margin-top: 100px;
 }
 label {
   display: block;
@@ -13,7 +19,7 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="email"],
 input[type="url"],
 input[type="tel"],
@@ -27,6 +33,17 @@ select {
   box-sizing: border-box;
   font-size: 1rem;
   margin-bottom: 0.5rem;
+} */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 select {

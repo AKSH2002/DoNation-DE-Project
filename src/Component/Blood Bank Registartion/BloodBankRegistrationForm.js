@@ -36,7 +36,9 @@ function BloodBankRegistrationForm() {
 
   return (
     <form className="form-container" onSubmit={handleSubmit}>
-      <h1>Blood Bank Registration Form</h1>
+      <div className="bldbnk">
+        <label>Blood Bank Registration Form</label>
+      </div>
       <div className="form-field">
         <label htmlFor="bloodBankName">Blood Bank Name *</label>
         <input
@@ -64,6 +66,7 @@ function BloodBankRegistrationForm() {
           onChange={(event) => setBloodBankCategory(event.target.value)}
           required
         >
+          <option value="">-- Select Category --</option>
           <option value="Govt.">Govt.</option>
           <option value="Red Cross">Red Cross</option>
           <option value="Charitable">Charitable</option>

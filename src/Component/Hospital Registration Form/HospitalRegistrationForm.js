@@ -37,8 +37,11 @@ const HospitalRegistrationForm = () => {
 
     return (
         <form className="hospital-registration-form" onSubmit={handleSubmit}>
-            <h2>Hospital Registration Form</h2>
+            {/* <h3>Hospital Registration Form</h3> */}
             <div className="form-group">
+            <div className='bldhsp'>
+                <label>Hospital Registration Form</label>
+            </div>
                 <label htmlFor="hospitalName">Hospital Name*</label>
                 <input
                     type="text"

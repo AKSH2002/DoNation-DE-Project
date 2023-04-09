@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import RequestService from '../../Service/RequestService';
+import RequestService from '../../Services/RequestService';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 import './Dashboard.css';
 

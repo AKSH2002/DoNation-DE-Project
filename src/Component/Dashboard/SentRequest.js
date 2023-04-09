@@ -7,10 +7,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-import RequestService from '../../Service/RequestService';
-import UserService from '../../Service/UserService';
+// import CircularProgress from '@mui/material/CircularProgress';
+// import Box from '@mui/material/Box';
+import RequestService from '../../Services/RequestService';
+import UserService from '../../Services/UserService';
 import './Dashboard.css';
 
 
