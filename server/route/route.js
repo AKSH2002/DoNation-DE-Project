@@ -1,5 +1,5 @@
 var express = require('express');
-
+const bb = require('../models/bloodBankModel.js');
 var bloodBankController = require('../controllers/bloodBankController.js');
 const router = express.Router();
 

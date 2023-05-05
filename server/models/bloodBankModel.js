@@ -66,4 +66,6 @@ var BloodBankSchema = new Schema({
 
 });
 
-module.exports = mongoose.model("Blood Bank",BloodBankSchema);
+bb = mongoose.model("Blood Bank",BloodBankSchema);
+
+module.exports=bb;

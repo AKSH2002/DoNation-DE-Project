@@ -80,7 +80,7 @@ function BloodBankRegistrationForm() {
   // };
 
   return (
-    <form className="form-container" method="get" onSubmit={handleSubmit}>
+    <form className="form-container" method="post" onSubmit={handleSubmit}>
       <div className="bldbnk">
         <label>Blood Bank Registration Form</label>
       </div>

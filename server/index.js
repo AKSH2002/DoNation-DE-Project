@@ -33,6 +33,11 @@ app.use('/blood-bank-signup',routes);
     //     console.log(BloodBank2);
     // })
     
+// Root endpoint
+app.get('/', (req, res) => {
+    res.send('Hello from JWoC .......');
+  });
+
     // app.get("/", (req, res) => {
         //     res.send(path.join(__dirname,"../src/Component/SignIn_Up/SignIn.js"));
         // });

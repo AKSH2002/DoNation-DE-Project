@@ -47,7 +47,7 @@ export const Header = () => {
 					{/* <button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/> */}
 					<button onClick={newChange}>Find A Blood Donor &nbsp; &#10095;</button><br/>
 					<button onClick={(e) => {window.open('/dashboard', '_self');}}>Post Blood Request &nbsp; &#10095;</button><br/>
-					{/* <button>Service Organisation (Comming Soon)</button><br/> */}
+					<button>Find Blood Bank </button><br/>
 				</section>
 			</div>
 			<div className='head_Img'>
@@ -129,10 +129,10 @@ export const Info = () => {
                		</div>
             	</div>
 				<div className="card2">
-					<img src="/assets/blood table.png" alt="no img"/>
+					<img src="/assets/blood_table.png" alt="no img"/>
 				</div>
             	<div className="card1">
-                	<img src="/assets/women blood donor.jpg" alt="no img" />
+                	<img src="/assets/women_blood_donor.jpg" alt="no img" />
                 	<div className="info1">
                     	<h1>Super-Women</h1>
                     	<p>Beauty with Brains ! Maya Patel, who donated 38 blood packet which are highest in year 2k22 !</p>
@@ -183,7 +183,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="/assets/blood typing game.jpeg" alt="flip-card" />
+                    <img className="s_img" src="/assets/blood_typing_game.jpeg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -198,7 +198,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="/assets/donor gift.png" alt="flip-card" />
+                    <img className="s_img" src="/assets/donor-gift.png" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
@@ -228,7 +228,7 @@ export const Info = () => {
           <div className="flip-card">
              <div className="flip-card-inner">
                  <div className="flip-card-front">
-                    <img className="s_img" src="/assets/blood test.jpg" alt="flip-card" />
+                    <img className="s_img" src="/assets/blood_test.jpg" alt="flip-card" />
                  </div>
                  <div className="flip-card-back">
                     <div className="text">
