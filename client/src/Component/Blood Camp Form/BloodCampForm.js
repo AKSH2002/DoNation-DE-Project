@@ -1,36 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './BloodCampForm.css';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import { useBloodCampHook } from "./useBloodCampHook";
 
-const BloodCampForm = () => {
-    const [organizationName, setOrganizationName] = useState('');
-    const [organizationType, setOrganizationType] = useState('Govt.');
-    const [organizerName, setOrganizerName] = useState('');
-    const [organizerMobileNumber, setOrganizerMobileNumber] = useState('');
-    const [organizerEmail, setOrganizerEmail] = useState('');
-    const [coOrganizerName, setCoOrganizerName] = useState('');
-    const [coOrganizerMobileNumber, setCoOrganizerMobileNumber] = useState('');
-    const [campName, setCampName] = useState('');
-    const [campAddress, setCampAddress] = useState('');
-    const [state, setState] = useState('Andhra Pradesh');
-    const [district, setDistrict] = useState('');
-    const [city, setCity] = useState('');
-    const [bloodBank, setBloodBank] = useState('Dummy Blood Bank 1');
-    const [campProposeDate, setCampProposeDate] = useState('');
-    const [startingTime, setStartingTime] = useState('');
-    const [endingTime, setEndingTime] = useState('');
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
-    const [estimatedParticipants, setEstimatedParticipants] = useState('');
-    const [refrence, setRefrence] = useState('');
-    const [remark, setRemark] = useState('');
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Handle form submission here
-    };
+    function BloodCampRegistrationForm() {
+        const { postData, setPostData, handleSubmit } = useBloodCampHook();
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method='POST'>
             <div className="form-group top">
                 <div className='bldcmp'>
                      <label>Blood Camp Registration Form</label>
@@ -39,8 +17,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="organizationName"
-                    value={organizationName}
-                    onChange={(event) => setOrganizationName(event.target.value)}
+                    value={postData.organizationName}
+                    onChange={(event) => setPostData({ ...postData, organizationName: event.target.value })}
                     required
                 />
             </div>
@@ -48,8 +26,8 @@ const BloodCampForm = () => {
                 <label htmlFor="organizationType">Organization Type</label>
                 <select
                     id="organizationType"
-                    value={organizationType}
-                    onChange={(event) => setOrganizationType(event.target.value)}
+                    value={postData.organizationType}
+                    onChange={(event) => setPostData({ ...postData, organizationType: event.target.value })}
                 >
                     <option value="Govt.">Govt.</option>
                     <option value="Charitable">Charitable</option>
@@ -61,8 +39,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="organizerName"
-                    value={organizerName}
-                    onChange={(event) => setOrganizerName(event.target.value)}
+                    value={postData.organizerName}
+                    onChange={(event) => setPostData({ ...postData, organizerName: event.target.value })}
                     required
                 />
             </div>
@@ -71,8 +49,8 @@ const BloodCampForm = () => {
                 <input
                     type="tel"
                     id="organizerMobileNumber"
-                    value={organizerMobileNumber}
-                    onChange={(event) => setOrganizerMobileNumber(event.target.value)}
+                    value={postData.organizerMobileNumber}
+                    onChange={(event) => setPostData({ ...postData, organizerMobileNumber: event.target.value })}
                     required
                 />
             </div>
@@ -81,8 +59,8 @@ const BloodCampForm = () => {
                 <input
                     type="email"
                     id="organizerEmail"
-                    value={organizerEmail}
-                    onChange={(event) => setOrganizerEmail(event.target.value)}
+                    value={postData.organizerEmail}
+                    onChange={(event) => setPostData({ ...postData, organizerEmail: event.target.value })}
                     required
                 />
             </div>
@@ -91,8 +69,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="coOrganizerName"
-                    value={coOrganizerName}
-                    onChange={(event) => setCoOrganizerName(event.target.value)}
+                    value={postData.coOrganizerName}
+                    onChange={(event) => setPostData({ ...postData, coOrganizerName: event.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -100,8 +78,8 @@ const BloodCampForm = () => {
                 <input
                     type="tel"
                     id="coOrganizerMobileNumber"
-                    value={coOrganizerMobileNumber}
-                    onChange={(event) => setCoOrganizerMobileNumber(event.target.value)}
+                    value={postData.coOrganizerMobileNumber}
+                    onChange={(event) => setPostData({ ...postData, coOrganizerMobileNumber: event.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -109,8 +87,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="campName"
-                    value={campName}
-                    onChange={(event) => setCampName(event.target.value)}
+                    value={postData.campName}
+                    onChange={(event) => setPostData({ ...postData, campName: event.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -118,8 +96,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="campAddress"
-                    value={campAddress}
-                    onChange={(event) => setCampAddress(event.target.value)}
+                    value={postData.campAddress}
+                    onChange={(event) => setPostData({ ...postData, campAddress: event.target.value })}
                     required
                 />
             </div>
@@ -127,8 +105,8 @@ const BloodCampForm = () => {
                 <label htmlFor="state">State </label>
                 <select
                     id="state"
-                    value={state}
-                    onChange={(event) => setState(event.target.value)}
+                    value={postData.state}
+                    onChange={(event) => setPostData({ ...postData, state: event.target.value })}
                     required
                 >
                     <option value="">-- Select State --</option>
@@ -167,8 +145,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="district"
-                    value={district}
-                    onChange={(event) => setDistrict(event.target.value)}
+                    value={postData.district}
+                    onChange={(event) => setPostData({ ...postData, district: event.target.value })}
                     required
                 />
             </div>
@@ -177,8 +155,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="city"
-                    value={city}
-                    onChange={(event) => setCity(event.target.value)}
+                    value={postData.city}
+                    onChange={(event) => setPostData({ ...postData, city: event.target.value })}
                     required
                 />
             </div>
@@ -186,8 +164,8 @@ const BloodCampForm = () => {
                 <label htmlFor="bloodBank">Blood Bank *</label>
                 <select
                     id="bloodBank"
-                    value={bloodBank}
-                    onChange={(event) => setBloodBank(event.target.value)}
+                    value={postData.bloodBank}
+                    onChange={(event) => setPostData({ ...postData, bloodBank: event.target.value })}
                     required
                 >
                     <option value="Dummy Blood Bank 1">Dummy Blood Bank 1</option>
@@ -202,28 +180,28 @@ const BloodCampForm = () => {
                 <input
                     type="date"
                     id="campProposeDate"
-                    value={campProposeDate}
-                    onChange={(event) => setCampProposeDate(event.target.value)}
+                    value={postData.campProposeDate}
+                    onChange={(event) => setPostData({ ...postData, campProposeDate: event.target.value })}
                     required
                 />
             </div>
             <div className="form-group">
                 <label htmlFor="startingTime">Starting Time (24HH:MM) *</label>
                 <input
-                    type="time"
+                    type="text"
                     id="startingTime"
-                    value={startingTime}
-                    onChange={(event) => setStartingTime(event.target.value)}
+                    value={postData.startingTime}
+                    onChange={(event) => setPostData({ ...postData, startingTime: event.target.value })}
                     required
                 />
             </div>
             <div className="form-group">
                 <label htmlFor="endingTime">Ending Time (24HH:MM) *</label>
                 <input
-                    type="time"
+                    type="text"
                     id="endingTime"
-                    value={endingTime}
-                    onChange={(event) => setEndingTime(event.target.value)}
+                    value={postData.endingTime}
+                    onChange={(event) => setPostData({ ...postData, endingTime: event.target.value })}
                     required
                 />
             </div>
@@ -232,8 +210,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="latitude"
-                    value={latitude}
-                    onChange={(event) => setLatitude(event.target.value)}
+                    value={postData.latitude}
+                    onChange={(event) => setPostData({ ...postData, latitude: event.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -241,8 +219,8 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="longitude"
-                    value={longitude}
-                    onChange={(event) => setLongitude(event.target.value)}
+                    value={postData.longitude}
+                    onChange={(event) => setPostData({ ...postData, longitude: event.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -250,8 +228,8 @@ const BloodCampForm = () => {
                 <input
                     type="number"
                     id="estimatedParticipants"
-                    value={estimatedParticipants}
-                    onChange={(event) => setEstimatedParticipants(event.target.value)}
+                    value={postData.estimatedParticipants}
+                    onChange={(event) => setPostData({ ...postData, estimatedParticipants: event.target.value })}
                     required
                 />
             </div>
@@ -260,18 +238,24 @@ const BloodCampForm = () => {
                 <input
                     type="text"
                     id="refrence"
-                    value={refrence}
-                    onChange={(event) => setRefrence(event.target.value)}
+                    value={postData.refrence}
+                    onChange={(event) => setPostData({ ...postData, refrence: event.target.value })}
                 />
             </div>
             <div className="form-group">
                 <label htmlFor="remark">Remark</label>
                 <textarea
                     id="remark"
-                    value={remark}
-                    onChange={(event) => setRemark(event.target.value)}
+                    value={postData.remark}
+                    onChange={(event) => setPostData({ ...postData, remark: event.target.value })}
                 />
             </div>
+            <FormControlLabel
+                  control={
+                    <Checkbox value="allowExtraEmails" color="error" required />
+                  }
+                  label="Accept the terms and Conditions."
+                />
             <div className='form1'>
             <button type="submit">Submit</button>
             </div>
@@ -279,4 +263,4 @@ const BloodCampForm = () => {
     );
 }
 
-export default BloodCampForm;
+export default BloodCampRegistrationForm;

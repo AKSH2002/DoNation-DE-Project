@@ -8,6 +8,9 @@ const app = express();
 mongoose.set('strictQuery', false);
 
 var routes = require('./route/route');
+var route = require('./route/hospitalRoute');
+var routess = require('./route/bloodCampRoute');
+
 const cors = require('cors');
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json());
@@ -15,7 +18,11 @@ app.use(cors());
 
 // app.use(express.static('server'));
 app.use(express.json());
+
+
 app.use('/blood-bank',routes);
+app.use('/hospital',route);
+app.use('/blood-camp',routess);
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -31,6 +38,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/BloodDonation",{
     console.log(err);
 });
 
+//for blood bank 
 app.post("http://localhost:8000/blood-bank-signup", async (req, res) => {
   try {
     const { body } = req;
@@ -45,6 +53,44 @@ app.post("http://localhost:8000/blood-bank-signup", async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to create blood bank record',
+    });
+  }
+});
+
+//for hospital
+app.post("http://localhost:8000/hospital/signup", async (req, res) => {
+  try {
+    const { body } = req;
+    console.log(body)
+    const newHospitalRecord = await Hospital.create(body);
+    res.status(200).json({
+      success: true,
+      hospitalRecord: newHospitalRecord,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create hospital record',
+    });
+  }
+});
+
+//for blood camp
+app.post("http://localhost:8000/blood-camp-signup", async (req, res) => {
+  try {
+    const { body } = req;
+    console.log(body)
+    const newBloodCampRecord = await BloodCamp.create(body);
+    res.status(200).json({
+      success: true,
+      bloodCampRecord: newBloodCampRecord,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create blood camp record',
     });
   }
 });

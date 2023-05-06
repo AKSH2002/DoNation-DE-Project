@@ -1,5 +1,7 @@
 import React from "react";
 import "./BloodBankRegistrationForm.css";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import { useBloodBankHook } from "./useBloodBankHook";
 
 function BloodBankRegistrationForm() {
@@ -339,6 +341,12 @@ function BloodBankRegistrationForm() {
           required
         />
       </div>
+      <FormControlLabel
+                  control={
+                    <Checkbox value="allowExtraEmails" color="error" required />
+                  }
+                  label="Accept the terms and Conditions."
+                />
       <div className="form-field">
         <button type="submit">Submit</button>
       </div>

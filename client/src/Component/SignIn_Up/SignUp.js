@@ -89,15 +89,6 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSpinner(true);
-    // firebase.auth()
-    //         createUserWithEmailAndPassword(auth,Email,password)
-    //         //  .signInWithEmailAndPassword(email, password)
-    //         .then((user) => {
-    //         // this.props.history.push('/');
-    //         })
-    //         .catch((error) => {
-    //         this.setState({ error: error });
-    //         });
 
     if (!validator.isEmail(Detail.username)) {
       setSpinner(false);

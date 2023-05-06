@@ -1,42 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './HospitalRegistrationForm.css';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import { useHospitalHook } from "./useHospitalHook.jsx";
 
-const HospitalRegistrationForm = () => {
-    const [hospitalName, setHospitalName] = useState('');
-    const [departmentName, setDepartmentName] = useState('');
-    const [hospitalCategory, setHospitalCategory] = useState('');
-    const [registrationNumber, setRegistrationNumber] = useState('');
-    const [startingDate, setStartingDate] = useState('');
-    const [expiringDate, setExpiringDate] = useState('');
-    const [address, setAddress] = useState('');
-    const [state, setState] = useState('');
-    const [district, setDistrict] = useState('');
-    const [subDistrict, setSubDistrict] = useState('');
-    const [town, setTown] = useState('');
-    const [village, setVillage] = useState('');
-    const [pinCode, setPinCode] = useState('');
-    const [mobileNumber, setMobileNumber] = useState('');
-    const [emergencyNumber, setEmergencyNumber] = useState('');
-    const [ambulanceNumber, setAmbulanceNumber] = useState('');
-    const [bloodBankNumber, setBloodBankNumber] = useState('');
-    const [helplineNumber, setHelplineNumber] = useState('');
-    const [primaryEmail, setPrimaryEmail] = useState('');
-    const [website, setWebsite] = useState('');
-    const [establishedSince, setEstablishedSince] = useState('');
-    const [contactPerson, setContactPerson] = useState('');
-    const [contactPersonNumber, setContactPersonNumber] = useState('');
-    const [nodalPersonNumber, setNodalPersonNumber] = useState('');
-    const [nodalPersonEmail, setNodalPersonEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // handle form submission
-    };
+function HospitalRegistrationForm() {
+    const { postData, setPostData, handleSubmit } = useHospitalHook();
 
     return (
-        <form className="hospital-registration-form" onSubmit={handleSubmit}>
+        <form className="hospital-registration-form" method='POST' onSubmit={handleSubmit}>
             {/* <h3>Hospital Registration Form</h3> */}
             <div className="form-group">
             <div className='bldhsp'>
@@ -47,8 +19,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="hospitalName"
                     name="hospitalName"
-                    value={hospitalName}
-                    onChange={(e) => setHospitalName(e.target.value)}
+                    value={postData.hospitalName}
+                    onChange={(e) => setPostData({ ...postData, hospitalName: e.target.value })}
                     required
                 />
             </div>
@@ -59,8 +31,8 @@ const HospitalRegistrationForm = () => {
                     id="departmentName"
                     name="departmentName"
                     placeholder="Blood Bank Department"
-                    value={departmentName}
-                    onChange={(e) => setDepartmentName(e.target.value)}
+                    value={postData.departmentName}
+                    onChange={(e) => setPostData({ ...postData, departmentName: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -68,8 +40,8 @@ const HospitalRegistrationForm = () => {
                 <select
                     id="hospitalCategory"
                     name="hospitalCategory"
-                    value={hospitalCategory}
-                    onChange={(e) => setHospitalCategory(e.target.value)}
+                    value={postData.hospitalCategory}
+                    onChange={(e) => setPostData({ ...postData, hospitalCategory: e.target.value })}
                     required
                 >
                     <option value="">-- Select Category --</option>
@@ -84,8 +56,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="registrationNumber"
                     name="registrationNumber"
-                    value={registrationNumber}
-                    onChange={(e) => setRegistrationNumber(e.target.value)}
+                    value={postData.registrationNumber}
+                    onChange={(e) => setPostData({ ...postData, registrationNumber: e.target.value })}
                     required />
                 <div className="date-range">
                     <label htmlFor="startingDate">Starting Date*</label>
@@ -93,8 +65,8 @@ const HospitalRegistrationForm = () => {
                         type="date"
                         id="startingDate"
                         name="startingDate"
-                        value={startingDate}
-                        onChange={(e) => setStartingDate(e.target.value)}
+                        value={postData.startingDate}
+                        onChange={(e) => setPostData({ ...postData, startingDate: e.target.value })}
                         required
                     />
                     <label htmlFor="expiringDate">Expiring Date*</label>
@@ -102,8 +74,8 @@ const HospitalRegistrationForm = () => {
                         type="date"
                         id="expiringDate"
                         name="expiringDate"
-                        value={expiringDate}
-                        onChange={(e) => setExpiringDate(e.target.value)}
+                        value={postData.expiringDate}
+                        onChange={(e) => setPostData({ ...postData, expiringDate: e.target.value })}
                         required
                     />
                 </div>
@@ -113,8 +85,8 @@ const HospitalRegistrationForm = () => {
                 <textarea
                     id="address"
                     name="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={postData.address}
+                    onChange={(e) => setPostData({ ...postData, address: e.target.value })}
                     required
                 ></textarea>
             </div>
@@ -123,8 +95,8 @@ const HospitalRegistrationForm = () => {
                 <select
                     id="state"
                     name="state"
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
+                    value={postData.state}
+                    onChange={(e) => setPostData({ ...postData, state: e.target.value })}
                     required
                 >
                     <option value="">-- Select State --</option>
@@ -164,8 +136,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="district"
                     name="district"
-                    value={district}
-                    onChange={(e) => setDistrict(e.target.value)}
+                    value={postData.district}
+                    onChange={(e) => setPostData({ ...postData, district: e.target.value })}
                     required
                 />
             </div>
@@ -175,8 +147,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="subDistrict"
                     name="subDistrict"
-                    value={subDistrict}
-                    onChange={(e) => setSubDistrict(e.target.value)}
+                    value={postData.subDistrict}
+                    onChange={(e) => setPostData({ ...postData, subDistrict: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -185,8 +157,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="town"
                     name="town"
-                    value={town}
-                    onChange={(e) => setTown(e.target.value)}
+                    value={postData.town}
+                    onChange={(e) => setPostData({ ...postData, town: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -195,8 +167,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="village"
                     name="village"
-                    value={village}
-                    onChange={(e) => setVillage(e.target.value)}
+                    value={postData.village}
+                    onChange={(e) => setPostData({ ...postData, village: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -205,8 +177,8 @@ const HospitalRegistrationForm = () => {
                     type="number"
                     id="pinCode"
                     name="pinCode"
-                    value={pinCode}
-                    onChange={(e) => setPinCode(e.target.value)}
+                    value={postData.pinCode}
+                    onChange={(e) => setPostData({ ...postData, pinCode: e.target.value })}
                     required
                 />
             </div>
@@ -216,8 +188,8 @@ const HospitalRegistrationForm = () => {
                     type="tel"
                     id="mobileNumber"
                     name="mobileNumber"
-                    value={mobileNumber}
-                    onChange={(e) => setMobileNumber(e.target.value)}
+                    value={postData.mobileNumber}
+                    onChange={(e) => setPostData({ ...postData, mobileNumber: e.target.value })}
                     required
                 />
             </div>
@@ -227,8 +199,8 @@ const HospitalRegistrationForm = () => {
                     type="tel"
                     id="emergencyNumber"
                     name="emergencyNumber"
-                    value={emergencyNumber}
-                    onChange={(e) => setEmergencyNumber(e.target.value)}
+                    value={postData.emergencyNumber}
+                    onChange={(e) => setPostData({ ...postData, emergencyNumber: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -237,8 +209,8 @@ const HospitalRegistrationForm = () => {
                     type="tel"
                     id="ambulanceNumber"
                     name="ambulanceNumber"
-                    value={ambulanceNumber}
-                    onChange={(e) => setAmbulanceNumber(e.target.value)}
+                    value={postData.ambulanceNumber}
+                    onChange={(e) => setPostData({ ...postData, ambulanceNumber: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -247,8 +219,8 @@ const HospitalRegistrationForm = () => {
                     type="tel"
                     id="bloodBankNumber"
                     name="bloodBankNumber"
-                    value={bloodBankNumber}
-                    onChange={(e) => setBloodBankNumber(e.target.value)}
+                    value={postData.bloodBankNumber}
+                    onChange={(e) => setPostData({ ...postData, bloodBankNumber: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -257,8 +229,8 @@ const HospitalRegistrationForm = () => {
                     type="tel"
                     id="helplineNumber"
                     name="helplineNumber"
-                    value={helplineNumber}
-                    onChange={(e) => setHelplineNumber(e.target.value)}
+                    value={postData.helplineNumber}
+                    onChange={(e) => setPostData({ ...postData, helplineNumber: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -267,8 +239,8 @@ const HospitalRegistrationForm = () => {
                     type="email"
                     id="primaryEmail"
                     name="primaryEmail"
-                    value={primaryEmail}
-                    onChange={(e) => setPrimaryEmail(e.target.value)}
+                    value={postData.primaryEmail}
+                    onChange={(e) => setPostData({ ...postData, primaryEmail: e.target.value })}
                     required
                 />
             </div>
@@ -278,8 +250,8 @@ const HospitalRegistrationForm = () => {
                     type="url"
                     id="website"
                     name="website"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
+                    value={postData.website}
+                    onChange={(e) => setPostData({ ...postData, website: e.target.value })}
                 />
             </div>
             <div className="form-group">
@@ -288,8 +260,8 @@ const HospitalRegistrationForm = () => {
                         type="number"
                         id="establishedSince"
                         name="establishedSince"
-                        value={establishedSince}
-                        onChange={(e) => setEstablishedSince(e.target.value)}
+                        value={postData.establishedSince}
+                        onChange={(e) => setPostData({ ...postData, establishedSince: e.target.value })}
                     />
             </div>
             <div className="form-group">
@@ -298,8 +270,8 @@ const HospitalRegistrationForm = () => {
                     type="text"
                     id="contactPerson"
                     name="contactPerson"
-                    value={contactPerson}
-                    onChange={(e) => setContactPerson(e.target.value)}
+                    value={postData.contactPerson}
+                    onChange={(e) => setPostData({ ...postData, contactPerson: e.target.value })}
                     required
                 />
             </div>
@@ -309,8 +281,8 @@ const HospitalRegistrationForm = () => {
                     type="tel"
                     id="contactPersonNumber"
                     name="contactPersonNumber"
-                    value={contactPersonNumber}
-                    onChange={(e) => setContactPersonNumber(e.target.value)}
+                    value={postData.contactPersonNumber}
+                    onChange={(e) => setPostData({ ...postData, contactPersonNumber: e.target.value })}
                     required
                 />
             </div>
@@ -320,19 +292,8 @@ const HospitalRegistrationForm = () => {
                     type="email"
                     id="nodalPersonEmail"
                     name="nodalPersonEmail"
-                    value={nodalPersonEmail}
-                    onChange={(e) => setNodalPersonEmail(e.target.value)}
-                    required
-                />
-            </div>
-            <div className="form-group">
-                <label htmlFor="nodalPersonNumber">Nodal Person Contact Number*</label>
-                <input
-                    type="tel"
-                    id="nodalPersonNumber"
-                    name="nodalPersonNumber"
-                    value={nodalPersonNumber}
-                    onChange={(e) => setNodalPersonNumber(e.target.value)}
+                    value={postData.nodalPersonEmail}
+                    onChange={(e) => setPostData({ ...postData, nodalPersonEmail: e.target.value })}
                     required
                 />
             </div>
@@ -342,8 +303,8 @@ const HospitalRegistrationForm = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={postData.password}
+                    onChange={(e) => setPostData({ ...postData, password: e.target.value })}
                     required
                 />
             </div>
@@ -353,11 +314,17 @@ const HospitalRegistrationForm = () => {
                     type="password"
                     id="confirmPassword"
                     name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    value={postData.confirmPassword}
+                    onChange={(e) => setPostData({ ...postData, confirmPassword: e.target.value })}
                     required
                 />
             </div>
+            <FormControlLabel
+                  control={
+                    <Checkbox value="allowExtraEmails" color="error" required />
+                  }
+                  label="Accept the terms and Conditions."
+                />
             <div className="form1">
                 <button type="submit">Submit</button>
             </div>
@@ -366,5 +333,3 @@ const HospitalRegistrationForm = () => {
 }
 
 export default HospitalRegistrationForm;
-
-

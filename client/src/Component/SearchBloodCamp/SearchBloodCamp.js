@@ -8,6 +8,9 @@ import AuthenticationService from '../../Services/AuthenticationService';
 import Button from '@mui/material/Button';    
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import Swal from "sweetalert2";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';   
@@ -129,6 +132,9 @@ export default function SearchBloodCamp() {
 
 	const [seachSpinner, setseachSpinner] = useState(false);
 	const [requestSpinner, setRequestSpinner] = useState(false);
+	const [Detail, setDetail] = useState({
+		dateOfCamp: null,
+	  });
 	const [pagination, setPagination] = useState({
 		totalRows: 0,
 		Loading: false,
@@ -293,12 +299,26 @@ export default function SearchBloodCamp() {
 							}}
 						/>
 
-                        <TextField id="date" label="Date" name="date" value={searchFor.date} size="small" sx={{width:"200px"}} color="error" autoComplete="date"
-                            onChange={(e) => {setSearchFor({...searchFor,[e.target.name]: e.target.value});}}
-                            InputLabelProps={{
-                                inputComponent: TextMaskCustom
-                            }}
-                        />
+						<LocalizationProvider dateAdapter={AdapterDateFns}>
+											<DatePicker
+											label="Date of Camp"
+											inputFormat="dd/MM/yyyy"
+											value={Detail.dateOfCamp}
+											openTo="year"
+											views={["year", "month", "day"]}
+											onChange={(newDate) => {
+												setDetail({ ...Detail, dateOfCamp: newDate });
+											}}
+											renderInput={(params) => (
+												<TextField
+												{...params}
+												style={{ gridArea: "DOC" }}
+												color="error"
+												required
+												/>
+											)}
+											/>
+										</LocalizationProvider>
 					</div>
 					<Button type="submit" variant="contained" sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} > 
                         Search 
