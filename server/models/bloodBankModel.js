@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var BloodBankSchema = new Schema({
+var bloodBankSchema = new Schema({
 
     Blood_Bank_Name: {
         type: String,
@@ -66,6 +66,6 @@ var BloodBankSchema = new Schema({
 
 });
 
-bb = mongoose.model("Blood Bank",BloodBankSchema);
+BloodBankModel = mongoose.model("BloodBankModel",bloodBankSchema, 'bloodBanks');
 
-module.exports=bb;
+module.exports=BloodBankModel;

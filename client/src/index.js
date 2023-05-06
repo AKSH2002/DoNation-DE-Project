@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
@@ -10,6 +12,8 @@ import reducers from './reducers';
 
 
 import App from './App';
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from '../src/utilities/Queries/index.ts';
 
 const store = createStore(reducers,compose(applyMiddleware(thunk)))
 // ReactDOM.render(
@@ -22,7 +26,10 @@ const rootContainer = ReactDOM.createRoot(container);
 rootContainer.render(
   <Provider store={store}>
   <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
     <App />
+    </QueryClientProvider>
+    <ToastContainer />
   </React.StrictMode>
   </Provider>
 )

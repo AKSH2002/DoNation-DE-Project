@@ -1,50 +1,22 @@
-var bloodBankServices = require('../bloodBankServices.js');
+const BloodBankModel  = require('../models/bloodBankModel.js');
 
-var createBloodBankControllerFn = async (req, res) => 
-{
-    try
-    {
-    console.log(req.body);
-    var status = await bloodBankServices.createBloodBankDBService(req.body);
-    console.log(status);
-
-    if (status) {
-        res.send({ "status": true, "message": "Blood Bank registrateration successfully" });
-    } else {
-        res.send({ "status": false, "message": "Error creating user" });
-    }
-}
-catch(err)
-{
-    console.log(err);
-}
+const bloodBankSignup = async (req, res) => {
+    try {
+        const { body } = req;
+        const newBloodBankRecord = await BloodBankModel.create(body);
+        res.status(200).json({
+          success: true,
+          bloodBankRecord: newBloodBankRecord,
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({
+          success: false,
+          message: 'Failed to create blood bank record',
+        });
+      }
 }
 
-// export const getPosts = (req,res) => {
-//     try{
-//         const BloodBankSchema.find();
-//     }
-//     catch(error){
-
-//     }
-// }
-
-// var loginBloodBankControllerFn = async (req, res) => {
-//     var result = null;
-//     try {
-//         result = await bloodBankServices.loginBloodBankDBService(req.body);
-//         if (result.status) {
-//             res.send({ "status": true, "message": result.msg });
-//         } else {
-//             res.send({ "status": false, "message": result.msg });
-//         }
-
-//     } catch (error) {
-//         console.log(error);
-//         res.send({ "status": false, "message": error.msg });
-//     }
-// }
-
-module.exports = { createBloodBankControllerFn};
+module.exports = { bloodBankSignup };
 
 // module.exports = { createBloodBankControllerFn,loginBloodBankControllerFn };

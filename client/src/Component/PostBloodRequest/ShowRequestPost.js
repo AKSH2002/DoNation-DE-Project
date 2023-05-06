@@ -5,7 +5,7 @@ export const ShowRequestPost = () => {
         <>
             <div className='curPost'>
                 <section className='warning'>
-                    {/* <span style={{marginRight:'5px'}}>Warning:</span> <marquee behavior="scroll" direction="left" scrollamount="3"> Do not pay any amount to any person promising supply of blood packets or arranging donors.</marquee> */}
+                    <span style={{marginRight:'5px'}}>Warning:</span> <marquee behavior="scroll" direction="left" scrollamount="3"> Do not pay any amount to any person promising supply of blood packets or arranging donors.</marquee>
                 </section>
                 <hr/>
                 <section className='postList'>

@@ -18,6 +18,12 @@ export const Header = () => {
 	const newChange = () =>{
 		history.push("/search-for-blood");
 	}
+	const secondChange = () => {
+		history.push("/search-blood-camp");
+	}
+	const oneChange = () =>{
+		history.push("/search-blood-bank");
+	}
 	useEffect(() => {
 		const height = header_height.current.offsetHeight + 300;
 		setHeight({
@@ -46,8 +52,8 @@ export const Header = () => {
 				<section className='serviceBtn'>
 					{/* <button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/> */}
 					<button onClick={newChange}>Find A Blood Donor &nbsp; &#10095;</button><br/>
-					<button onClick={(e) => {window.open('/dashboard', '_self');}}>Post Blood Request &nbsp; &#10095;</button><br/>
-					<button>Find Blood Bank </button><br/>
+					<button onClick={secondChange}>Search Blood Camp &nbsp; &#10095;</button><br/>
+					<button onClick={oneChange}>Find Blood Bank </button><br/>
 				</section>
 			</div>
 			<div className='head_Img'>

@@ -1,83 +1,9 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import "./BloodBankRegistrationForm.css";
-import { useSelector, useDispatch } from "react-redux";
-import { createData } from "../../actions/bloodBank.js";
-
+import { useBloodBankHook } from "./useBloodBankHook";
 
 function BloodBankRegistrationForm() {
-
-  const Dispatch = useDispatch();
-
-  // const classes = useStyles();
-
-  const bloodBank = useSelector((state) => state.bloodBank);
-
-  console.log(bloodBank);
-
-  const [postData, setPostData] = useState({  bloodBankName:'', parentHospitalName:'', bloodBankCategory:'', contactPerson:'', email:'', contactNumber:'', licenceNumber:'', licenceStartDate:'', licenceExpiryDate:'', helplineNumber:'', state:'', district:'', city:'', address:'', pinCode:'', password:'', confirmPassword:''  });
-
-  // const [bloodBankName, setBloodBankName] = useState("");
-  // const [parentHospitalName, setParentHospitalName] = useState("");
-  // const [bloodBankCategory, setBloodBankCategory] = useState("Govt.");
-  // const [contactPerson, setContactPerson] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [contactNumber, setContactNumber] = useState("");
-  // const [licenceNumber, setLicenceNumber] = useState("");
-  // const [licenceStartDate, setLicenceStartDate] = useState("");
-  // const [licenceExpiryDate, setLicenceExpiryDate] = useState("");
-  // const [helplineNumber, setHelplineNumber] = useState("");
-  // const [state, setState] = useState("");
-  // const [district, setDistrict] = useState("");
-  // const [city, setCity] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [pinCode, setPinCode] = useState("");
-  // // const [availableStock, setAvailableStock] = useState([]);
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission
-
-    Dispatch(createData(postData));
-
-  };
-
-  async function save(event) {
-    try {
-      await axios.post("http://localhost:8000/blood-bank-signup", {
-      Blood_Bank_Name: String,
-      State: String,
-      District: String,
-      City: String,
-      Address: String,
-      Pincode: Number,
-      Nodal_Officer: String,
-      Contact_Nodal_Officer: String,
-      Email_Nodal_Officer: String,
-      Helpline: String,
-      // Blood_Component_Available: String,
-      License_No: String,
-      Date_License_Obtained: Date,
-      Date_of_Renewal: Date,
-      Category: String,
-      password: String,
-      });
-      alert("Blood Bank Registation Successfully");
-
-    } catch (err) {
-      alert(err);
-    }
-  }
-
-  // const handleAvailableStockChange = (event) => {
-  //   const selectedStock = Array.from(
-  //     event.target.selectedOptions,
-  //     (option) => option.value
-  //   );
-  //   setAvailableStock(selectedStock);
-  // };
+  const { postData, setPostData, handleSubmit } = useBloodBankHook();
 
   return (
     <form className="form-container" method="post" onSubmit={handleSubmit}>
@@ -90,7 +16,9 @@ function BloodBankRegistrationForm() {
           type="text"
           id="bloodBankName"
           value={postData.bloodBankName}
-          onChange={(event) => setPostData({ ...postData, bloodBankName:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, bloodBankName: event.target.value })
+          }
           required
         />
       </div>
@@ -100,7 +28,9 @@ function BloodBankRegistrationForm() {
           type="text"
           id="parentHospitalName"
           value={postData.parentHospitalName}
-          onChange={(event) => setPostData({ ...postData, parentHospitalName:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, parentHospitalName: event.target.value })
+          }
         />
       </div>
       <div className="form-field">
@@ -108,7 +38,9 @@ function BloodBankRegistrationForm() {
         <select
           id="bloodBankCategory"
           value={postData.bloodBankCategory}
-          onChange={(event) => setPostData({ ...postData, bloodBankCategory:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, bloodBankCategory: event.target.value })
+          }
           required
         >
           <option value="">-- Select Category --</option>
@@ -124,7 +56,9 @@ function BloodBankRegistrationForm() {
           type="text"
           id="contactPerson"
           value={postData.contactPerson}
-          onChange={(event) => setPostData({ ...postData, contactPerson:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, contactPerson: event.target.value })
+          }
           required
         />
       </div>
@@ -134,7 +68,9 @@ function BloodBankRegistrationForm() {
           type="email"
           id="email"
           value={postData.email}
-          onChange={(event) => setPostData({ ...postData, email:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, email: event.target.value })
+          }
           required
         />
       </div>
@@ -144,7 +80,9 @@ function BloodBankRegistrationForm() {
           type="tel"
           id="contactNumber"
           value={postData.contactNumber}
-          onChange={(event) => setPostData({ ...postData, contactNumber:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, contactNumber: event.target.value })
+          }
           required
         />
       </div>
@@ -154,7 +92,9 @@ function BloodBankRegistrationForm() {
           type="text"
           id="licenceNumber"
           value={postData.licenceNumber}
-          onChange={(event) => setPostData({ ...postData, licenceNumber:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, licenceNumber: event.target.value })
+          }
           required
         />
       </div>
@@ -164,7 +104,9 @@ function BloodBankRegistrationForm() {
           type="date"
           id="licenceStartDate"
           value={postData.licenceStartDate}
-          onChange={(event) => setPostData({ ...postData, licenceStartDate:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, licenceStartDate: event.target.value })
+          }
           required
         />
       </div>
@@ -174,7 +116,9 @@ function BloodBankRegistrationForm() {
           type="date"
           id="licenceExpiryDate"
           value={postData.licenceExpiryDate}
-          onChange={(event) => setPostData({ ...postData, licenceExpiryDate:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, licenceExpiryDate: event.target.value })
+          }
           required
         />
       </div>
@@ -184,7 +128,9 @@ function BloodBankRegistrationForm() {
           type="tel"
           id="helplineNumber"
           value={postData.helplineNumber}
-          onChange={(event) => setPostData({ ...postData, helplineNumber:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, helplineNumber: event.target.value })
+          }
         />
       </div>
       <div className="form-field">
@@ -192,7 +138,9 @@ function BloodBankRegistrationForm() {
         <select
           id="state"
           value={postData.state}
-          onChange={(event) => setPostData({ ...postData, state:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, state: event.target.value })
+          }
           required
         >
           <option value="">Select State</option>
@@ -232,7 +180,9 @@ function BloodBankRegistrationForm() {
           type="text"
           id="district"
           value={postData.district}
-          onChange={(event) => setPostData({ ...postData, district:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, district: event.target.value })
+          }
           required
         />
       </div>
@@ -242,7 +192,9 @@ function BloodBankRegistrationForm() {
           type="text"
           id="city"
           value={postData.city}
-          onChange={(event) => setPostData({ ...postData, city:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, city: event.target.value })
+          }
         />
       </div>
       <div className="form-field">
@@ -250,17 +202,21 @@ function BloodBankRegistrationForm() {
         <textarea
           id="address"
           value={postData.address}
-          onChange={(event) => setPostData({ ...postData, address:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, address: event.target.value })
+          }
           required
         ></textarea>
       </div>
       <div className="form-field">
         <label htmlFor="pinCode">Pin Code *</label>
         <input
-          type="text"
+          type="number"
           id="pinCode"
           value={postData.pinCode}
-          onChange={(event) => setPostData({ ...postData, pinCode:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, pinCode: event.target.value })
+          }
           required
         />
       </div>
@@ -365,7 +321,9 @@ function BloodBankRegistrationForm() {
           type="password"
           id="password"
           value={postData.password}
-          onChange={(event) => setPostData({ ...postData, password:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, password: event.target.value })
+          }
           required
         />
       </div>
@@ -375,18 +333,17 @@ function BloodBankRegistrationForm() {
           type="password"
           id="confirmPassword"
           value={postData.confirmPassword}
-          onChange={(event) => setPostData({ ...postData, confirmPassword:event.target.value})}
+          onChange={(event) =>
+            setPostData({ ...postData, confirmPassword: event.target.value })
+          }
           required
         />
       </div>
       <div className="form-field">
-        <button type="submit" onClick={save}>Submit</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
-};
+}
 
 export default BloodBankRegistrationForm;
-
-
-

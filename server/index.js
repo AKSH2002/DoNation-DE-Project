@@ -9,70 +9,18 @@ mongoose.set('strictQuery', false);
 
 var routes = require('./route/route');
 const cors = require('cors');
-
-
-
-
-
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json());
 app.use(cors());
 
 // app.use(express.static('server'));
 app.use(express.json());
-app.use('/blood-bank-signup',routes);
+app.use('/blood-bank',routes);
 
-// const staticPath = path.join(__dirname,"../src");
-
-// app.set("view engine","hbs");
-
-// app.use(express.json());
-
-// app.get("/",(req,res)=>{
-    //     const BloodBank2= req.body.State;
-    //     console.log(BloodBank2);
-    // })
-    
 // Root endpoint
 app.get('/', (req, res) => {
     res.send('Hello from JWoC .......');
   });
-
-    // app.get("/", (req, res) => {
-        //     res.send(path.join(__dirname,"../src/Component/SignIn_Up/SignIn.js"));
-        // });
-        
-        
-        
-        
-        // const BloodBankSchema= new mongoose.Schema({
-            //     Blood_Bank_Name: String,
-//     State: String,
-//     District: String,
-//     City: String,
-//     Address: String,
-//     Pincode: Number,
-//     Contact_No: String,
-//     Mobile: Number,
-//     Helpline: Number,
-//     Fax: String,
-//     Email: String,
-//     Nodal_Officer: String,
-//     Contact_Nodal_Officer: String,
-//     Mobile_Nodal_Officer: Number,
-//     Email_Nodal_Officer: String,
-//     Category: String,
-//     Blood_Component_Available: String,
-//     Apheresis: String,
-//     Service_Time: String,
-//     License_No: String,
-//     Date_License_Obtained: String,
-//     Date_of_Renewal: Date,
-//     Latitude: String,
-//     Longitude: String,
-// });
-
-// const BloodBank = new mongoose.model("Blood Bank",BloodBankSchema);
 
 mongoose.connect("mongodb://0.0.0.0:27017/BloodDonation",{
     useNewUrlParser:true,
@@ -83,15 +31,22 @@ mongoose.connect("mongodb://0.0.0.0:27017/BloodDonation",{
     console.log(err);
 });
 
-
-// Create Data
-app.post("http://localhost:8000/blood-bank-signup", async (req,res) => {
-    const bloodbank = await BloodBank.create(req.body);
-
+app.post("http://localhost:8000/blood-bank-signup", async (req, res) => {
+  try {
+    const { body } = req;
+    console.log(body)
+    const newBloodBankRecord = await BloodBank.create(body);
     res.status(200).json({
-        success:true,
-        bloodbank,
+      success: true,
+      bloodBankRecord: newBloodBankRecord,
     });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create blood bank record',
+    });
+  }
 });
 
 //Read Data
