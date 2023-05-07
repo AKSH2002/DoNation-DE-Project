@@ -107,3 +107,9 @@ nav{
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+
+  .navbar-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }

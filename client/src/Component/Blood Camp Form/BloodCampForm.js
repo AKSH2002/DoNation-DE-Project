@@ -4,8 +4,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useBloodCampHook } from "./useBloodCampHook";
 
-    function BloodCampRegistrationForm() {
-        const { postData, setPostData, handleSubmit } = useBloodCampHook();
+function BloodCampRegistrationForm() {
+    const { postData, setPostData, handleSubmit } = useBloodCampHook();
 
     return (
         <form onSubmit={handleSubmit} method='POST'>

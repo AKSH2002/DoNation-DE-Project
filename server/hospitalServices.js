@@ -35,7 +35,7 @@ module.exports.createHospitalDBService = (hospitalDetails) => {
        hospitalModelData.Contact_Person_Email = hospitalDetails.Contact_Person_Email;
        hospitalModelData.password = hospitalDetails.password;
        var encrypted = encryptor.encrypt(hospitalDetails.password);
-       hospitaltModelData.password = encrypted;
+       hospitalModelData.password = encrypted;
 
        hospitalModelData.save(function resultHandle(error, result) {
 

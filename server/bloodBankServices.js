@@ -25,7 +25,7 @@ module.exports.createBloodBankDBService = (bloodBankDetails) => {
        bloodBankModelData.Date_of_Renewal = bloodBankDetails.Date_of_Renewal;
        bloodBankModelData.password = bloodBankDetails.password;
        var encrypted = encryptor.encrypt(bloodBankDetails.password);
-       bloodBanktModelData.password = encrypted;
+       bloodBankModelData.password = encrypted;
 
        bloodBankModelData.save(function resultHandle(error, result) {
 

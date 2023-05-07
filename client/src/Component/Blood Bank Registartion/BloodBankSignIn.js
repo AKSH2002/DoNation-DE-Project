@@ -25,29 +25,29 @@ import InputAdornment from "@mui/material/InputAdornment";
 //   createUserWithEmailAndPassword,
 // } from "firebase/auth";
 
-import "./SignIn_Up.css";
-import { useSignHook } from "./useSignHook";
+import "../SignIn_Up/SignIn_Up.css";
+import { useSignInHook } from "./useSignInHook";
 // import UserService from "../../Service/UserService";
 
-export default function SignIn() {
-  const { SigninUser } = useSignHook();
+export default function BloodBankSignIn() {
+  const { SigninBloodBank } = useSignInHook();
   const [errorMsg, seterrorMsg] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [Alert, setAlert] = useState(false);
   const [Spinner, setSpinner] = useState(false);
-  const [Users, setUsers] = useState({
+  const [BloodBank, setBloodBank] = useState({
     email: "",
     password: "",
   });
 
   const handleChange = (e) => {
     e.persist();
-    setUsers({ ...Users, [e.target.name]: e.target.value });
+    setBloodBank({ ...BloodBank, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    SigninUser(Users);
+    SigninBloodBank(BloodBank)
   };
 
   const handleCloseAlert = (event, reason) => {
@@ -170,7 +170,7 @@ export default function SignIn() {
                   </Grid>
                   <Grid item>
                     <br />
-                    <Link href="/donors-signup" variant="body2" color="#c6414c">
+                    <Link href="/blood-bank-signup" variant="body2" color="#c6414c">
                       Don't have an account? Sign Up
                     </Link>
                   </Grid>

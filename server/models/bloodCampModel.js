@@ -86,7 +86,7 @@ var bloodCampSchema = new Schema({
     Remark: {
         type: String,
         required: true
-    }
+    },
 
 });
 

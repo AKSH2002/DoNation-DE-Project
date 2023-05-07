@@ -17,25 +17,23 @@ import InputLabel from "@mui/material/InputLabel";
 import { IMaskInput } from "react-imask";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import Link from "@mui/material/Link";
-import MuiAlert from "@mui/material/Alert";
+// import MuiAlert from "@mui/material/Alert";
 import MenuItem from "@mui/material/MenuItem";
 import PasswordTwoToneIcon from "@mui/icons-material/PasswordTwoTone";
 import PropTypes from "prop-types";
 import React from "react";
-import RegistrationService from "../../Services/RegistrationService";
+// import RegistrationService from "../../Services/RegistrationService";
 import Select from "@mui/material/Select";
 import { Snackbar } from "@mui/material";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import State_City_Data from '../../Services/Data';
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import validator from "validator";
 import "./SignIn_Up.css";
-import { db } from "../../firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
-// import { Email } from '@mui/icons-material';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
-// import { auth  } from "../../firebase";
+// import { db } from "../../firebase";
+// import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { useUserHook } from "./useUserHook";
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -59,128 +57,106 @@ TextMaskCustom.propTypes = {
 };
 
 export default function SignUp() {
+    const { Detail, setDetail, Address, setAddress, handleSubmit } = useUserHook();
+
   const { data } = State_City_Data;
   const stateList = Object.keys(data);
   const [cityList, setCityList] = useState([]);
-  const [errorMsg, setErrorMsg] = useState();
-  const [Detail, setDetail] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: null,
-    bloodGroup: "",
-    whatsAppNumber: "",
-    lastDonationDate: null,
-    gender: "",
-    username: "",
-    password: "",
-  });
-  const [Address, setAddress] = useState({
-    streetAddress: "",
-    city: "",
-    state: "",
-    pincode: "",
-  });
+  // const [errorMsg, setErrorMsg] = useState();
   const [showPassword, setShowPassword] = useState(false);
-  const [Spinner, setSpinner] = useState(false);
-  const [Alert, setAlert] = useState(false);
+  // const [Spinner, setSpinner] = useState(false);
+  // const [Alert, setAlert] = useState(false);
   const BlTypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
   const Genders = ["Male", "Female", "Unisex"];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSpinner(true);
+  //   if (!validator.isEmail(Detail.username)) {
+  //     setSpinner(false);
+  //     // setAlert(true);
+  //     setErrorMsg("Enter valid Email address");
+  //   } else if (
+  //     !validator.isStrongPassword(Detail.password, {
+  //       minLength: 8,
+  //       minLowercase: 1,
+  //       minUppercase: 1,
+  //       minNumbers: 1,
+  //       minSymbols: 1,
+  //     })
+  //   ) {
+  //     setSpinner(false);
+  //     // setAlert(true);
+  //     setErrorMsg(
+  //       "Password must be 8 character and contain atleast one Lowercase, Uppercase, Numbers & Symbols"
+  //     );
+  //   } else {
+  //     // const user_details = {
+  //     //   appUserDTO: {
+  //     //     firstName: Detail.firstName,
+  //     //     lastName: Detail.lastName,
+  //     //     gender: Detail.gender,
+  //     //     dateOfBirth: Detail.dateOfBirth,
+  //     //     username: Detail.username,
+  //     //     password: Detail.password,
+  //     //   },
+  //     //   donorDTO: {
+  //     //     bloodGroup: Detail.bloodGroup,
+  //     //     streetAddress: Address.streetAddress,
+  //     //     state: Address.state,
+  //     //     city: Address.city,
+  //     //     pincode: Address.pincode,
+  //     //     whatsapp: Detail.whatsAppNumber,
+  //     //     lastDonationDate: Detail.lastDonationDate,
+  //     //   },
 
-    if (!validator.isEmail(Detail.username)) {
-      setSpinner(false);
-      setAlert(true);
-      setErrorMsg("Enter valid Email address");
-    } else if (
-      !validator.isStrongPassword(Detail.password, {
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-      })
-    ) {
-      setSpinner(false);
-      setAlert(true);
-      setErrorMsg(
-        "Password must be 8 character and contain atleast one Lowercase, Uppercase, Numbers & Symbols"
-      );
-    } else {
-      const user_details = {
-        appUserDTO: {
-          firstName: Detail.firstName,
-          lastName: Detail.lastName,
-          gender: Detail.gender,
-          dateOfBirth: Detail.dateOfBirth,
-          username: Detail.username,
-          password: Detail.password,
-        },
-        donorDTO: {
-          bloodGroup: Detail.bloodGroup,
-          streetAddress: Address.streetAddress,
-          state: Address.state,
-          city: Address.city,
-          pincode: Address.pincode,
-          whatsapp: Detail.whatsAppNumber,
-          lastDonationDate: Detail.lastDonationDate,
-        },
-
-        // createUserWithEmailAndPassword(auth,Email,password)
-
-        // .catch((err) => console.log("Error-", err));
-      };
-      try {
-        await addDoc(collection(db, "signup"), {
-          title: user_details,
-          //   description: password,
-          completed: false,
-          created: Timestamp.now(),
-        });
-        // onClose()
-        setTimeout(() => {
-          setSpinner(false);
-        }, 2000);
-      } catch (err) {
-        alert(err);
-      }
-      RegistrationService.registerDonor(user_details).then((response)=>{
-          console.log(response)
-          setSpinner(false);
-          Swal.fire({
-              imageUrl:`${process.env.PUBLIC_URL}/assets/email.png`,
-              imageHeight: '200',
-              imageWidth: '250',
-              title: "You're almost there!",
-              html: "<i>"+Detail.username+"</i> <br> Head over to your inbox to confirm your email and finish your account creation!",
-              confirmButtonText: 'Go To Login',
-              allowOutsideClick: false,
-              allowEscapeKey: false,
-              focusConfirm: true,
-          }).then((result) => {
-              if (result.isConfirmed) {
-                  window.location.replace('/signin');
-              }
-          });
-      }).catch((error) =>{
-          setSpinner(false);
-          setAlert(true);
-          console.log(error);
-          if(error.response && error.response.data && error.response.data.message)
-              setErrorMsg("error.response.data.message");
-          else
-              setErrorMsg("Failed to Register, Try after some time...");
-      });
-    }
-  };
+  //     };
+  // //     try {
+  // //       await addDoc(collection(db, "signup"), {
+  // //         title: user_details,
+  // //         //   description: password,
+  // //         completed: false,
+  // //         created: Timestamp.now(),
+  // //       });
+  // //       // onClose()
+  // //       setTimeout(() => {
+  // //         setSpinner(false);
+  // //       }, 2000);
+  // //     } catch (err) {
+  // //       alert(err);
+  // //     }
+  // //     RegistrationService.registerDonor(user_details).then((response)=>{
+  // //         console.log(response)
+  // //         setSpinner(false);
+  // //         Swal.fire({
+  // //             imageUrl:`${process.env.PUBLIC_URL}/assets/email.png`,
+  // //             imageHeight: '200',
+  // //             imageWidth: '250',
+  // //             title: "You're almost there!",
+  // //             html: "<i>"+Detail.username+"</i> <br> Head over to your inbox to confirm your email and finish your account creation!",
+  // //             confirmButtonText: 'Go To Login',
+  // //             allowOutsideClick: false,
+  // //             allowEscapeKey: false,
+  // //             focusConfirm: true,
+  // //         }).then((result) => {
+  // //             if (result.isConfirmed) {
+  // //                 window.location.replace('/signin');
+  // //             }
+  // //         });
+  // //     }).catch((error) =>{
+  // //         setSpinner(false);
+  // //         setAlert(true);
+  // //         console.log(error);
+  // //         if(error.response && error.response.data && error.response.data.message)
+  // //             setErrorMsg("error.response.data.message");
+  // //         else
+  // //             setErrorMsg("Failed to Register, Try after some time...");
+  // //     });
+  // //   }
+  // // };
 
   const handleCloseAlert = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setAlert(false);
+    // setAlert(false);
   };
 
   const handleClickShowPassword = () => {
@@ -192,21 +168,21 @@ export default function SignUp() {
       <div className="register">
         <div className="form">
           <Snackbar
-            open={Alert}
+            // open={Alert}
             autoHideDuration={10000}
             onClick={handleCloseAlert}
             onClose={handleCloseAlert}
             anchorOrigin={{ vertical: "top", horizontal: "right" }}
             sx={{ mt: 6 }}
           >
-            <MuiAlert
+            {/* <MuiAlert
               elevation={6}
               variant="filled"
               severity="error"
               sx={{ width: "100%" }}
             >
               {errorMsg}
-            </MuiAlert>
+            </MuiAlert> */}
           </Snackbar>
           <Card
             sx={{
@@ -219,6 +195,7 @@ export default function SignUp() {
             <CardContent>
               <Box
                 component="form"
+                type="POST"
                 onSubmit={handleSubmit}
                 Validate
                 sx={{ mt: 2, width: "400px" }}
@@ -538,12 +515,12 @@ export default function SignUp() {
                   }}
                 >
                   Sign Up
-                  {Spinner && (
+                  {/* {Spinner && (
                     <CircularProgress
                       sx={{ ml: 2, color: "white" }}
                       size={20}
                     />
-                  )}
+                  )} */}
                 </Button>
 
                 <Grid container justifyContent="flex-end">
@@ -578,15 +555,3 @@ export default function SignUp() {
     </>
   );
 }
-
-// function Copyright(props) {
-//     return (
-//         <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//             {"Copyright © "}<Link to="/" color="inherit" underline="none">BConnect</Link>{" "}{new Date().getFullYear()}{"."}
-//         </Typography>
-//     );
-// }
-
-// <Typography component="h1" variant="h5" fontWeight={{fontWeight:"bolder"}}>
-//     Sign Up
-// </Typography>

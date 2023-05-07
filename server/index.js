@@ -10,6 +10,7 @@ mongoose.set('strictQuery', false);
 var routes = require('./route/route');
 var route = require('./route/hospitalRoute');
 var routess = require('./route/bloodCampRoute');
+var user = require('./route/userRoute');
 
 const cors = require('cors');
 app.use(bodyParser.urlencoded({ extended:false }));
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use('/blood-bank',routes);
 app.use('/hospital',route);
 app.use('/blood-camp',routess);
+app.use('/user',user);
 
 // Root endpoint
 app.get('/', (req, res) => {
@@ -95,11 +97,30 @@ app.post("http://localhost:8000/blood-camp-signup", async (req, res) => {
   }
 });
 
+//for users
+app.post("http://localhost:8000/user-signup", async (req, res) => {
+  try {
+    const { body } = req;
+    console.log(body)
+    const newUserRecord = await User.create(body);
+    res.status(200).json({
+      success: true,
+      userRecord: newUserRecord,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create user record',
+    });
+  }
+});
+
 //Read Data
 app.get("http://localhost:8000/blood-bank-signup", async (req,res) => {
 
     const bloodbanks = await BloodBank.find();
-
+    
     res.status(200).json({
         success:true,
         bloodbanks,
