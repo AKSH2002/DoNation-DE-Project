@@ -53,7 +53,7 @@ export const Header = () => {
 					{/* <button onClick={(e) => {window.open('/search-for-blood', '_self');}}>Find A Blood Donor &nbsp; &#10095;</button><br/> */}
 					<button onClick={newChange}>Find A Blood Donor &nbsp; &#10095;</button><br/>
 					<button onClick={secondChange}>Search Blood Camp &nbsp; &#10095;</button><br/>
-					<button onClick={oneChange}>Find Blood Bank </button><br/>
+					<button onClick={oneChange}>Find Blood Bank &nbsp; &#10095;</button><br/>
 				</section>
 			</div>
 			<div className='head_Img'>

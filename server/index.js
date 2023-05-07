@@ -27,9 +27,9 @@ app.use('/blood-camp',routess);
 app.use('/user',user);
 
 // Root endpoint
-app.get('/', (req, res) => {
-    res.send('Hello from JWoC .......');
-  });
+// app.get('/search-for-blood', (req, res) => {
+//     res.send('Hello from JWoC .......');
+//   });
 
 mongoose.connect("mongodb://0.0.0.0:27017/BloodDonation",{
     useNewUrlParser:true,
@@ -116,15 +116,26 @@ app.post("http://localhost:8000/user-signup", async (req, res) => {
   }
 });
 
-//Read Data
-app.get("http://localhost:8000/blood-bank-signup", async (req,res) => {
+//Read(search) blood bank Data
+app.get("/search-for-blood-bank", async (req,res) => {
 
-    const bloodbanks = await BloodBank.find();
-    
-    res.status(200).json({
-        success:true,
-        bloodbanks,
-    });
+  try{
+    const bloodBankRecord = await BloodBankModel.find({});
+    res.send({ status:"ok", data:bloodBankRecord});
+  }catch(error) {
+    console.log(error);
+  }
+});
+
+//Read(search) blood camp Data
+app.get("/search-for-blood-camp", async (req,res) => {
+
+  try{
+    const bloodCampRecord = await BloodCampModel.find({});
+    res.send({ status:"ok", data:bloodCampRecord});
+  }catch(error) {
+    console.log(error);
+  }
 });
 
 // //Update Data

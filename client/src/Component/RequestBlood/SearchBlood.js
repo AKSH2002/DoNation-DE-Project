@@ -39,59 +39,59 @@ TextMaskCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const columns = [
-  { field: "id", hide: true },
-  {
-    field: "srNo",
-    headerName: "Sr. No.",
-    type: "number",
-    align: "center",
-    sortable: false,
-    disableColumnMenu: true,
-    width: 70,
-    valueGetter: (params) => {
-      return params.api.getRowIndex(params.row.id) + 1;
-    },
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    sortable: false,
-    width: 200,
-    disableColumnMenu: true,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
-  {
-    field: "bloodGroup",
-    headerName: "Blood Group",
-    sortable: false,
-    disableColumnMenu: true,
-    width: 130,
-  },
-  {
-    field: "gender",
-    headerName: "Gender",
-    sortable: false,
-    disableColumnMenu: true,
-    width: 100,
-  },
-  {
-    field: "age",
-    headerName: "Age",
-    sortable: false,
-    disableColumnMenu: true,
-    width: 70,
-  },
-  {
-    field: "streetAddress",
-    headerName: "Address",
-    sortable: false,
-    disableColumnMenu: true,
-    flex: 1,
-    minwidth: 300,
-  },
-];
+// const columns = [
+//   { field: "id", hide: true },
+//   {
+//     field: "srNo",
+//     headerName: "Sr. No.",
+//     type: "number",
+//     align: "center",
+//     sortable: false,
+//     disableColumnMenu: true,
+//     width: 70,
+//     valueGetter: (params) => {
+//       return params.api.getRowIndex(params.row.id) + 1;
+//     },
+//   },
+//   {
+//     field: "fullName",
+//     headerName: "Full name",
+//     sortable: false,
+//     width: 200,
+//     disableColumnMenu: true,
+//     valueGetter: (params) =>
+//       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+//   },
+//   {
+//     field: "bloodGroup",
+//     headerName: "Blood Group",
+//     sortable: false,
+//     disableColumnMenu: true,
+//     width: 130,
+//   },
+//   {
+//     field: "gender",
+//     headerName: "Gender",
+//     sortable: false,
+//     disableColumnMenu: true,
+//     width: 100,
+//   },
+//   {
+//     field: "age",
+//     headerName: "Age",
+//     sortable: false,
+//     disableColumnMenu: true,
+//     width: 70,
+//   },
+//   {
+//     field: "streetAddress",
+//     headerName: "Address",
+//     sortable: false,
+//     disableColumnMenu: true,
+//     flex: 1,
+//     minwidth: 300,
+//   },
+// ];
 
 function CustomNoRowsOverlay() {
   return (
@@ -151,27 +151,31 @@ function CustomNoRowsOverlay() {
 }
 
 export default function SearchBlood() {
-  const { data: originalData, isError, error, isLoading } = useSearchBooldHook();
+  const { data: originalData, isError, error, isLoading, searchFor, setSearchFor } = useSearchBooldHook();
+
+  // const rows = originalData?.map((item)=>{
+  //   return{ field: "Blood_Bank_Name", headerName: originalData.Blood_Bank_Name, width: 200 }
+  // })
+
   const [seachSpinner, setseachSpinner] = useState(false);
   const [requestSpinner, setRequestSpinner] = useState(false);
-  const [pagination, setPagination] = useState({
-    totalRows: 0,
-    Loading: false,
-    totalPages: 0,
-    page: 0,
-  });
+  // const [pagination, setPagination] = useState({
+  //   totalRows: 0,
+  //   Loading: false,
+  //   totalPages: 0,
+  //   page: 0,
+  // });
+  if(isLoading === false){
+    
+    console.log(originalData);
+  }
   const [foundDonors, setFoundDonors] = useState([]);
 
   const { data } = State_City_Data;
   const State = Object.keys(data);
   const [selectedState, setSelectedState] = useState();
   const [cityList, setcityList] = useState([]);
-
-  const [searchFor, setSearchFor] = useState({
-    bloodGroup: "",
-    city: "",
-    pincode: "",
-  });
+ 
   const BloodTypes = [
     "A+",
     "A-",
@@ -187,6 +191,82 @@ export default function SearchBlood() {
   const [selectedRows, setSelectedRows] = useState([]);
   const prevSelectedRows = useRef(selectedRows);
 
+// const columns = [
+//   { field: "_id", headerName: "ID", width: 150 },
+//   { field: "Blood_Bank_Name", headerName: "Blood Bank Name", width: 200 },
+//   { field: "State", headerName: "State", width: 120 },
+//   { field: "District", headerName: "District", width: 150 },
+//   { field: "City", headerName: "City", width: 150 },
+//   { field: "Address", headerName: "Address", width: 300 },
+//   { field: "Pincode", headerName: "Pincode", width: 120 },
+//   { field: "Nodal_Officer", headerName: "Nodal Officer", width: 200 },
+//   {
+//     field: "Contact_Nodal_Officer",
+//     headerName: "Nodal Officer Contact",
+//     width: 200,
+//   },
+//   { field: "Email_Nodal_Officer", headerName: "Nodal Officer Email", width: 250 },
+//   { field: "Helpline", headerName: "Helpline", width: 150 },
+//   { field: "Category", headerName: "Category", width: 150 },
+//   { field: "License_No", headerName: "License No.", width: 200 },
+//   { field: "Date_License_Obtained", headerName: "Date License Obtained", width: 220 },
+//   { field: "Date_of_Renewal", headerName: "Date of Renewal", width: 200 },
+//   { field: "password", headerName: "Password", width: 150 },
+// ];
+
+// const rows = [
+//   {
+//     id: "1",
+//     _id: "645766128600f73990d507e8",
+//     Blood_Bank_Name: "hjvbk",
+//     State: "Gujarat",
+//     District: "ahmedabad",
+//     City: "Mehsana",
+//     Address:
+//       "Near Sanku's Water Park ,Ahmedabad-Mahesana Highway , Linch Gujrat-384435",
+//     Pincode: 384435,
+//     Nodal_Officer: "mciohn",
+//     Contact_Nodal_Officer: "09313394925",
+//     Email_Nodal_Officer: "200390116028@saffrony.ac.in",
+//     Helpline: "15616165156",
+//     Category: "Private",
+//     License_No: "1970-03-01T16:21:51.561Z",
+//     Date_License_Obtained: "2023-05-07T00:00:00.000Z",
+//     Date_of_Renewal: "2023-05-07T00:00:00.000Z",
+//     password: "12345",
+//   },
+// ];
+const columns = [
+  { field: "_id", headerName: "ID", width: 150 },
+  { field: "Blood_Bank_Name", headerName: "Blood Bank Name", width: 200 },
+  { field: "State", headerName: "State", width: 120 },
+  { field: "District", headerName: "District", width: 150 },
+  { field: "City", headerName: "City", width: 150 },
+  { field: "Address", headerName: "Address", width: 300 },
+  { field: "Pincode", headerName: "Pincode", width: 120 },
+  { field: "Nodal_Officer", headerName: "Nodal Officer", width: 200 },
+  {
+    field: "Contact_Nodal_Officer",
+    headerName: "Nodal Officer Contact",
+    width: 200,
+  },
+  { field: "Email_Nodal_Officer", headerName: "Nodal Officer Email", width: 250 },
+  { field: "Helpline", headerName: "Helpline", width: 150 },
+  { field: "Category", headerName: "Category", width: 150 },
+  { field: "License_No", headerName: "License No.", width: 200 },
+  { field: "Date_License_Obtained", headerName: "Date License Obtained", width: 220 },
+  { field: "Date_of_Renewal", headerName: "Date of Renewal", width: 200 },
+  { field: "password", headerName: "Password", width: 150 },
+];
+
+const pagination = {
+  page: 0,
+  totalPages: 1,
+  totalRows: 1,
+  Loading: false,
+};
+
+
   function CustomPagination() {
     return (
       <Pagination
@@ -194,7 +274,7 @@ export default function SearchBlood() {
         count={pagination.totalPages}
         page={pagination.page + 1}
         onChange={(event, value) => {
-          setPagination({ ...pagination, page: value - 1 });
+          // setPagination({ ...pagination, page: value - 1 });
         }}
       />
     );
@@ -203,22 +283,22 @@ export default function SearchBlood() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setseachSpinner(true);
-    setPagination({ ...pagination, Loading: true });
+    // setPagination({ ...pagination, Loading: true });
     userService
       .findDonor(searchFor, 0)
       .then((response) => {
         setseachSpinner(false);
         setFoundDonors(response.data.donors);
-        setPagination({
-          ...pagination,
-          totalPages: response.data.numberOfPages,
-          totalRows: response.data.numberOfElements,
-          Loading: false,
-        });
+        // setPagination({
+        //   ...pagination,
+        //   totalPages: response.data.numberOfPages,
+        //   totalRows: response.data.numberOfElements,
+        //   Loading: false,
+        // });
       })
       .catch((error) => {
         setseachSpinner(false);
-        setPagination({ ...pagination, Loading: false });
+        // setPagination({ ...pagination, Loading: false });
         console.log("error => " + error);
       });
   };
@@ -259,19 +339,19 @@ export default function SearchBlood() {
   useEffect(() => {
     if (searchFor.bloodGroup.length !== 0 && searchFor.city.length !== 0) {
       prevSelectedRows.current = selectedRows;
-      setPagination({ ...pagination, Loading: true });
+      // setPagination({ ...pagination, Loading: true });
       setFoundDonors([]);
       userService
         .findDonor(searchFor, pagination.page)
         .then((response) => {
           setFoundDonors(response.data.donors);
-          setPagination({ ...pagination, Loading: false });
+          // setPagination({ ...pagination, Loading: false });
           setTimeout(() => {
             setSelectedRows(prevSelectedRows.current);
           });
         })
         .catch((error) => {
-          setPagination({ ...pagination, Loading: false });
+          // setPagination({ ...pagination, Loading: false });
           console.log("page error =>" + error);
         });
     }

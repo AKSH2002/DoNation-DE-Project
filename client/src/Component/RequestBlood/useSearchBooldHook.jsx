@@ -1,15 +1,23 @@
 import { useQuery } from "@tanstack/react-query"
+import { useState } from "react";
 
 export const useSearchBooldHook = () => {
+  const [searchFor, setSearchFor] = useState({
+    bloodGroup: "",
+    city: "",
+    pincode: "",
+  });
+
     const { data, isError, error, isLoading, refetch } = useQuery(['blood-doners-data'],async () => {
-        const res = await fetch('http://localhost:8000/blood-bank-signup').then(res => res.json())
-        return res.json();
+        return fetch('http://localhost:8000/search-for-blood').then(res => res.json())
       })
   return {
     data,
     isError,
     error,
     isLoading,
-    refetch
+    refetch,
+    searchFor,
+    setSearchFor
   }
 }

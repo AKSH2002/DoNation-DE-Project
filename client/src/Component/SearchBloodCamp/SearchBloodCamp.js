@@ -19,6 +19,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Pagination from '@mui/material/Pagination';
 import { DataGrid } from "@mui/x-data-grid";
 import "./RequestBlood.css";
+import { useSearchBooldCampHook } from "./useSearchBooldCampHook";
 
 
 
@@ -43,104 +44,63 @@ TextMaskCustom.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-
-
-
 const columns = [
-	{field: "id", hide: true},
-	{ field: "srNo", headerName: "Sr. No.", type:'number', align:'center', sortable: false, disableColumnMenu: true, width: 70,
-	  valueGetter: (params) => {
-		  return params.api.getRowIndex(params.row.id)+1;
+	{
+		id: 1,
+		field: "Organization_Name",
+		headerName: "Organization Name",
+		width: 150,
 	  },
-	},
-    { field: "date", headerName: "Date", sortable: false, disableColumnMenu: true, width: 80 },
-	{ field: "campName", headerName: "Camp name", sortable: false, width: 130, disableColumnMenu: true,
-	  valueGetter: (params) =>
-		`${params.row.firstName || ""} ${params.row.lastName || ""}`
-	},
-	{ field: "address", headerName: "Address", sortable: false, disableColumnMenu: true, width: 130 },
-	{ field: "state", headerName: "State", sortable: false, disableColumnMenu: true, width: 70 },
-	{ field: "district", headerName: "District", sortable: false, disableColumnMenu: true, width: 70},
-	{ field: "contact", headerName: "Contact", sortable: false, disableColumnMenu: true, flex: 1, minwidth: 100 },
-    { field: "conducted", headerName: "Conducted By", sortable: false, disableColumnMenu: true, width: 70},
-    { field: "organized", headerName: "Organized By", sortable: false, disableColumnMenu: true, width: 70},
-    { field: "register", headerName: "Register By", sortable: false, disableColumnMenu: true, width: 70},
-    { field: "time", headerName: "Time", sortable: false, disableColumnMenu: true, width: 70},
+	  { id: 2, field: "Organization_Type", headerName: "Organization_Type", width: 120 },
+	  { id: 3, field: "Organizer_Email", headerName: "Organizer_Email", width: 120 },
+	  { id: 4, field: "Camp_Name", headerName: "Camp_Name", width: 120 },
+	  { id: 5, field: "Camp_Address", headerName: "Camp_Address", width: 120 },
+	  { id: 6, field: "State", headerName: "State", width: 80 },
+	  { id: 7, field: "City_Name", headerName: " City_Name", width: 80 },
+	  { id: 8, field: "Camp_Propose_Date", headerName: "Camp_Propose_Date", width: 120 },
+	  { id: 9, field: "Starting_Time", headerName: "Starting_Time", width: 120 },
+	  { id: 10, field: "Ending_Time", headerName: "Ending_Time", width: 120 },
 ];
 
 
 
-function CustomNoRowsOverlay() {
-	return (
-	  <div style={{
-		height: '90%',
-		marginTop: '10px',
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'center',
-
-	  }}>
-		<svg
-		  width="120"
-		  height="100"
-		  viewBox="0 0 184 152"
-		  aria-hidden
-		  focusable="false"
-		>
-		  <g fill="none" fillRule="evenodd">
-			<g transform="translate(24 31.67)">
-			  <ellipse
-				cx="67.797"
-				cy="106.89"
-				rx="67.797"
-				ry="12.668"
-				fill='#f5f5f5'
-				fillOpacity='0.8'
-			  />
-			  <path
-			  	fill='#aeb8c2'
-				d="M122.034 69.674L98.109 40.229c-1.148-1.386-2.826-2.225-4.593-2.225h-51.44c-1.766 0-3.444.839-4.592 2.225L13.56 69.674v15.383h108.475V69.674z"
-			  />
-			  <path
-			  	fill='#f5f5f7'
-				d="M33.83 0h67.933a4 4 0 0 1 4 4v93.344a4 4 0 0 1-4 4H33.83a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4z"
-			  />
-			  <path
-				fill='#dce0e6'
-				d="M42.678 9.953h50.237a2 2 0 0 1 2 2V36.91a2 2 0 0 1-2 2H42.678a2 2 0 0 1-2-2V11.953a2 2 0 0 1 2-2zM42.94 49.767h49.713a2.262 2.262 0 1 1 0 4.524H42.94a2.262 2.262 0 0 1 0-4.524zM42.94 61.53h49.713a2.262 2.262 0 1 1 0 4.525H42.94a2.262 2.262 0 0 1 0-4.525zM121.813 105.032c-.775 3.071-3.497 5.36-6.735 5.36H20.515c-3.238 0-5.96-2.29-6.734-5.36a7.309 7.309 0 0 1-.222-1.79V69.675h26.318c2.907 0 5.25 2.448 5.25 5.42v.04c0 2.971 2.37 5.37 5.277 5.37h34.785c2.907 0 5.277-2.421 5.277-5.393V75.1c0-2.972 2.343-5.426 5.25-5.426h26.318v33.569c0 .617-.077 1.216-.221 1.789z"
-			  />
-			</g>
-			<path
-			  fill='#dce0e6'
-			  d="M149.121 33.292l-6.83 2.65a1 1 0 0 1-1.317-1.23l1.937-6.207c-2.589-2.944-4.109-6.534-4.109-10.408C138.802 8.102 148.92 0 161.402 0 173.881 0 184 8.102 184 18.097c0 9.995-10.118 18.097-22.599 18.097-4.528 0-8.744-1.066-12.28-2.902z"
-			/>
-			<g fill='#fff' transform="translate(149.65 15.383)">
-			  <ellipse cx="20.654" cy="3.167" rx="2.849" ry="2.815" />
-			  <path d="M5.698 5.63H0L2.898.704zM9.259.704h4.985V5.63H9.259z" />
-			</g>
-		  </g>
-		</svg>
-		<Box>No Donors</Box>
-	  </div>
-	);
-}
-  
-
-
 export default function SearchBloodCamp() {
+	const {
+		data: originalData,
+		isLoading,
+		searchFor,
+		setSearchFor,
+		handleFilter,
+	  } = useSearchBooldCampHook();
+	  console.log("originalData", originalData);
+
+	  const rows = originalData?.map((item, index) => {
+		return {
+		  id: index + 1,
+		  Organization_Name: item.Organization_Name,
+		  Organization_Type: item.Organization_Type,
+		  Organizer_Email: item.Organizer_Email,
+		  Camp_Name:item.Camp_Name,
+		  Camp_Address: item.Camp_Address,
+		  State: item.State,
+		  City_Name:item.City_Name,
+		  Camp_Propose_Date: item.Camp_Propose_Date,
+		  Starting_Time: item.Starting_Time,
+		  Ending_Time: item.Ending_Time,
+		};
+	  });
 
 	const [seachSpinner, setseachSpinner] = useState(false);
 	const [requestSpinner, setRequestSpinner] = useState(false);
 	const [Detail, setDetail] = useState({
-		dateOfCamp: null,
+		Camp_Propose_Date: null,
 	  });
-	const [pagination, setPagination] = useState({
-		totalRows: 0,
-		Loading: false,
-		totalPages: 0,
+	  const pagination = {
 		page: 0,
-	});
+		totalPages: 1,
+		totalRows: 1,
+		Loading: false,
+	  };
 	const [foundDonors, setFoundDonors] = useState([]);
 	
 	const { data } = State_City_Data;
@@ -148,113 +108,48 @@ export default function SearchBloodCamp() {
 	const [selectedState, setSelectedState] = useState();
 	const [cityList, setcityList] = useState([]);
 	
-	const [searchFor, setSearchFor] = useState({
-		bloodGroup:"",
-		city:"",
-		pincode:"",
-        date:"",
-	});
+	// const [searchFor, setSearchFor] = useState({
+	// 	bloodGroup:"",
+	// 	city:"",
+	// 	pincode:"",
+    //     date:"",
+	// });
 	// const BloodTypes = [ 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-', 'Bombay'];
 
 	const [selectedRows, setSelectedRows] = useState([]);
 	const prevSelectedRows = useRef(selectedRows);
 	
 
-	function CustomPagination() {	
+	function CustomPagination() {
 		return (
-		<Pagination
+		  <Pagination
 			color="error"
 			count={pagination.totalPages}
 			page={pagination.page + 1}
-			onChange={(event, value) => {setPagination({...pagination, page: (value - 1)});}}
-		/>
+			onChange={(event, value) => {
+			  // setPagination({ ...pagination, page: value - 1 });
+			}}
+		  />
 		);
-	}
+	  }
 
 
 
-	const handleSearchSubmit = (e) => {
+	  const handleSearchSubmit = async (e) => {
 		e.preventDefault();
-        setseachSpinner(true);
-		setPagination({...pagination, Loading: true});
-		userService.findDonor(searchFor, 0)
-		.then(response => {
-			setseachSpinner(false);
-			setFoundDonors(response.data.donors);
-			setPagination({
-				...pagination,
-				totalPages: response.data.numberOfPages,
-				totalRows: response.data.numberOfElements,
-				Loading: false
-			});
-		})
-		.catch(error => {
-			setseachSpinner(false);
-			setPagination({...pagination, Loading: false});
-			console.log("error => " + error);
-		})
-	}
+	
+		const response = await fetch("http://localhost:8000/search-for-blood-camp", {
+		  method: "GET",
+		  headers: {
+			"Content-Type": "application/json",
+		  },
+		});
+	
+		// const data = await response.json();
+		// Do something with the response data
+	  };
 
 
-	const handleRequestSubmit = () => {
-		if(selectedRows.length !== 0)
-		{
-			setRequestSpinner(true);
-			console.log('request clicked');
-			console.log(selectedRows);
-			userService.setRequestDonor(selectedRows);
-			if(AuthenticationService.isUserLoggedIn())
-			{
-				setRequestSpinner(false);
-				window.location.replace('/send-Request');
-			}
-			else{
-				Swal.fire({
-					confirmButtonText: 'Login',
-					showDenyButton: true,
-					denyButtonText: `Register As User`,
-					backdrop: `rgba(0,0,0,0.4)`,
-					allowOutsideClick: false,
-					allowEscapeKey: false,
-					focusConfirm: true,
-				}).then((result) => {
-					setRequestSpinner(true);
-					if (result.isConfirmed) {
-						window.location.replace('/signin');
-					}
-					else if (result.isDenied) {    
-						window.location.replace('/user/signup');
-					}
-				});
-				setRequestSpinner(true);
-			}
-		}
-		else{
-			console.error("To request select donor first");
-		}
-	}
-
-
-	useEffect(() => {
-		if(searchFor.bloodGroup.length !== 0 && searchFor.city.length !== 0)
-		{
-			prevSelectedRows.current = selectedRows;
-			setPagination({...pagination, Loading: true});
-			setFoundDonors([]);
-			userService.findDonor(searchFor, pagination.page)
-			.then(response => {
-				setFoundDonors(response.data.donors);
-				setPagination({...pagination, Loading: false});
-				setTimeout(() => {
-					setSelectedRows(prevSelectedRows.current);
-				});
-			})
-			.catch(error => {
-				setPagination({...pagination, Loading: false});
-				console.log("page error =>" + error);
-			});
-		}
-	}, [pagination.page])
 
 
 
@@ -283,7 +178,7 @@ export default function SearchBloodCamp() {
 
 						<FormControl style={{gridArea:'City'}} size="small" sx={{width:"200px"}}>
 							<InputLabel id="City-label" color='error' required>City</InputLabel>
-							<Select id="city" labelId="City-label" name="city" label="City*" value={searchFor.city} color='error' required 
+							<Select id="city" labelId="City-label" name="City_Name" label="City_Name*" value={searchFor.City_Name} color='error' required 
 								onChange={(e) => {setSearchFor({...searchFor, [e.target.name]: e.target.value});}}>
 								<MenuItem key="default" value="Default" disabled>Select City</MenuItem>
 								{cityList.map((name, key) => (
@@ -295,7 +190,7 @@ export default function SearchBloodCamp() {
 						<TextField id="pincode" label="Pincode" name="pincode" value={searchFor.pincode} size="small" color='error' autoComplete="pincode" 
 							onChange={(e) => {setSearchFor({...searchFor, [e.target.name]: e.target.value});}}
 							InputProps={{
-								inputComponent: TextMaskCustom
+								inputComponent: TextMaskCustom,
 							}}
 						/>
 
@@ -303,11 +198,11 @@ export default function SearchBloodCamp() {
 											<DatePicker
 											label="Date of Camp"
 											inputFormat="dd/MM/yyyy"
-											value={Detail.dateOfCamp}
+											value={Detail.Camp_Propose_Date}
 											openTo="year"
 											views={["year", "month", "day"]}
 											onChange={(newDate) => {
-												setDetail({ ...Detail, dateOfCamp: newDate });
+												setDetail({ ...Detail, Camp_Propose_Date: newDate });
 											}}
 											renderInput={(params) => (
 												<TextField
@@ -320,40 +215,41 @@ export default function SearchBloodCamp() {
 											/>
 										</LocalizationProvider>
 					</div>
-					<Button type="submit" variant="contained" sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} > 
+					<Button type="submit" variant="contained" sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} onClick={() => handleFilter()}
+					> 
                         Search 
                         {seachSpinner && (<CircularProgress sx={{ml:2, color:'white'}} size={20}/>)}
                     </Button>
 				</Box>
 				<div className="search_donor_result">
 					<DataGrid
-						getRowId={(row) => row.id}
-						columns={columns}
-						rows={foundDonors}
-						page={pagination.page}
-						pageSize={pagination.totalPages}
-						rowsPerPageOptions={[5]}
-						rowCount={pagination.totalRows}
-						loading={pagination.Loading}
-						pagination
-						paginationMode="server"
-						checkboxSelection
-						autoHeight
-						style={{backgroundColor:'white'}}
-						onSelectionModelChange={(newSelection) => {
-							setSelectedRows(newSelection);
-						}}
-						selectionModel={selectedRows}
-						components={{
-							Pagination: CustomPagination,
-							NoRowsOverlay: CustomNoRowsOverlay,
-							NoResultsOverlay: CustomNoRowsOverlay,
+					 getRowId={(row) => row.id}
+              columns={columns}
+              rows={rows}
+              page={pagination.page}
+              pageSize={pagination.totalPages}
+              rowsPerPageOptions={[5]}
+              rowCount={pagination.totalRows}
+              loading={pagination.Loading}
+              pagination
+              paginationMode="server"
+              checkboxSelection
+              autoHeight
+              style={{ backgroundColor: "white" }}
+              onSelectionModelChange={(newSelection) => {
+                setSelectedRows(newSelection);
+              }}
+              selectionModel={selectedRows}
+              components={{
+                Pagination: CustomPagination,
+                // NoRowsOverlay: CustomNoRowsOverlay,
+                // NoResultsOverlay: CustomNoRowsOverlay,
 						}}
 					/>
-					<Button variant="contained" onClick={() => handleRequestSubmit()} sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} > 
+					{/* <Button variant="contained" onClick={() => handleRequestSubmit()} sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} > 
                         Search 
                         {requestSpinner && (<CircularProgress sx={{ml:2, color:'white'}} size={20}/>)}
-                    </Button>
+                    </Button> */}
 				</div>
 			</section>
 		</div>
