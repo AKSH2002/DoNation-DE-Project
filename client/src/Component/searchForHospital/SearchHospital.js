@@ -16,7 +16,7 @@ import React, { useState, useRef } from "react";
 import Pagination from "@mui/material/Pagination";
 import { DataGrid } from "@mui/x-data-grid";
 import "./RequestBlood.css";
-import { useSearchBooldBankHook } from "./useSearchBooldBankHook.jsx";
+import { useSearchHospitalHook } from "./useSearchHospitalHook";
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -41,15 +41,15 @@ TextMaskCustom.propTypes = {
 const columns = [
   {
     id: 1,
-    field: "Blood_Bank_Name",
-    headerName: "Blood Bank Name",
+    field: "Hospital_Name",
+    headerName: "Hospital Name",
     width: 200,
   },
   { id: 2, field: "State", headerName: "State", width: 120 },
-  { id: 3, field: "City", headerName: "City", width: 150 },
+  { id: 3, field: "District", headerName: "District", width: 150 },
   { id: 4, field: "Address", headerName: "Address", width: 150 },
-  { id: 5, field: "Pincode", headerName: "Pincode", width: 120 },
-  { id: 6, field: "Helpline", headerName: "Helpline", width: 120 },
+  { id: 5, field: "Pin_Code", headerName: "Pin_Code", width: 120 },
+  { id: 6, field: "Helpline_No", headerName: "Helpline_No", width: 120 },
 ];
 
 //   {
@@ -111,14 +111,13 @@ const columns = [
 //   },
 // ];
 
-export default function SearchBloodBank() {
+export default function SearchHospital() {
   const {
     data: originalData,
-    isLoading,
     searchFor,
     setSearchFor,
     handleFilter,
-  } = useSearchBooldBankHook();
+  } = useSearchHospitalHook();
   console.log("originalData", originalData);
   // const rows = originalData?.map((item) => {
   //   return (
@@ -137,17 +136,17 @@ export default function SearchBloodBank() {
   const rows = originalData?.map((item, index) => {
     return {
       id: index + 1,
-      Blood_Bank_Name: item.Blood_Bank_Name,
+      Hospital_Name: item.Hospital_Name,
       State: item.State,
-      City: item.City,
+      District: item.District,
       Address:item.Address,
-      Pincode: item.Pincode,
-      Helpline: item.Helpline,
+      Pin_Code: item.Pin_Code,
+      Helpline_No: item.Helpline_No,
     };
   });
 
   const [seachSpinner, setseachSpinner] = useState(false);
-  const [requestSpinner, setRequestSpinner] = useState(false);
+  // const [requestSpinner, setRequestSpinner] = useState(false);
   // const [pagination, setPagination] = useState({
   //   totalRows: 0,
   //   Loading: false,
@@ -160,7 +159,7 @@ export default function SearchBloodBank() {
     totalRows: 1,
     Loading: false,
   };
-  const [foundDonors, setFoundDonors] = useState([]);
+  // const [foundDonors, setFoundDonors] = useState([]);
 
   const { data } = State_City_Data;
   const State = Object.keys(data);
@@ -186,7 +185,7 @@ export default function SearchBloodBank() {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:8000/search-for-blood-bank", {
+    const response = await fetch("http://localhost:8000/search-for-hospital", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -200,16 +199,10 @@ export default function SearchBloodBank() {
   return (
     <>
       <div
-        className="search_donor_container"
-        style={{
-          backgroundImage: `url(${
-            process.env.PUBLIC_URL + "/assets/search-bg.svg"
-          })`,
-        }}
-      >
+        className="search_donor_container"  style={{ backgroundImage: `url(${  process.env.PUBLIC_URL + "/assets/search-bg.svg" })` }}>
         <section>
           <h1>
-            <span>Search</span> for <span>Blood Bank</span>
+            <span>Search</span> for <span>Hospital</span>
           </h1>
         </section>
         <section>
@@ -255,14 +248,14 @@ export default function SearchBloodBank() {
                 sx={{ width: "200px" }}
               >
                 <InputLabel id="City-label" color="error" required>
-                  City
+                  District
                 </InputLabel>
                 <Select
-                  id="city"
+                  id="District"
                   labelId="City-label"
-                  name="city"
-                  label="City*"
-                  value={searchFor.city}
+                  name="District"
+                  label="District*"
+                  value={searchFor.district}
                   color="error"
                   required
                   onChange={(e) => {
@@ -273,7 +266,7 @@ export default function SearchBloodBank() {
                   }}
                 >
                   <MenuItem key="default" value="Default" disabled>
-                    Select City
+                    Select District
                   </MenuItem>
                   {cityList.map((name, key) => (
                     <MenuItem key={key} value={name}>

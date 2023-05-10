@@ -3,19 +3,19 @@ import PropTypes from "prop-types";
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from "@mui/material/TextField";
 import Box from '@mui/material/Box';
-import userService from '../../Services/UserService'
-import AuthenticationService from '../../Services/AuthenticationService';
+// import userService from '../../Services/UserService'
+// import AuthenticationService from '../../Services/AuthenticationService';
 import Button from '@mui/material/Button';    
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';   
 import State_City_Data from '../../Services/Data';
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Pagination from '@mui/material/Pagination';
 import { DataGrid } from "@mui/x-data-grid";
 import "./RequestBlood.css";

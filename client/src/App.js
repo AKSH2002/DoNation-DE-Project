@@ -27,6 +27,7 @@ import Dashboard from './Component/Dashboard';
 import {useDispatch} from 'react-redux';
 import {getData} from './actions/bloodBank.js'
 import { authStore } from "./store/authStore";
+import SearchHospital from './Component/searchForHospital/SearchHospital';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
 			<Route path='/search-for-blood' exact component={SearchBlood}/>
 			<Route path='/search-blood-bank' exact component={SearchBloodBank}/>
 			<Route path='/search-blood-camp' exact component={SearchBloodCamp}/>
+			<Route path='/search-hospital' exact component={SearchHospital}/>
 			{/* <Route path='/request-blood' exact component={Dashboard}/> */}
 			<Route path='/blood-camp-signup' exact component={BloodCampForm}/>
 			{/* <Route path='/blood-camp-signin' exact component={BloodCampSignIn}/> */}

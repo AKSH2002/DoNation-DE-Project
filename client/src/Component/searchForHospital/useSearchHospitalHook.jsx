@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const useSearchBooldBankHook = () => {
+export const useSearchHospitalHook = () => {
   const [searchFor, setSearchFor] = useState({
     state: "",
-    city: "",
+    district: "",
     pincode: "",
   });
   
-  const { data: originalData, isError, error, isLoading, refetch } = useQuery(['blood-banks-data'],async () => {
-    return fetch('http://localhost:8000/search-for-blood-bank').then(res => res.json())
+  const { data: originalData, isError, error, isLoading, refetch } = useQuery(['hospitals-data'],async () => {
+    return fetch('http://localhost:8000/search-for-hospital').then(res => res.json())
   })
   const [data, setData] = useState(originalData?.data ?? [])
 
@@ -18,10 +18,10 @@ export const useSearchBooldBankHook = () => {
           if (searchFor?.state !== "" && item.State !== searchFor?.state) {
             return false;
           }
-          if (searchFor?.city !== "" && item.City !== searchFor?.city) {
+          if (searchFor?.district !== "" && item.District !== searchFor?.district) {
             return false;
           }
-          if (searchFor?.pincode !== "" && item.Pincode !== parseInt(searchFor?.pincode)) {
+          if (searchFor?.pincode !== "" && item.Pin_Code !== parseInt(searchFor?.pincode)) {
             return false;
           }
           return true;

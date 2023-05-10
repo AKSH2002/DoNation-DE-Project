@@ -87,7 +87,7 @@ export default function HospitalSignIn() {
                 variant="h5"
                 sx={{ fontWeight: "bolder" }}
               >
-                SIGN IN
+                HOSPITAL SIGN IN
               </Typography>
               <Box
                 component="form"

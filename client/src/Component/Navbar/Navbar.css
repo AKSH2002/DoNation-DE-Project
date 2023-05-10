@@ -8,11 +8,14 @@ nav{
     text-align: center;
     align-items: center;
     justify-content: space-between;
-    background-color: #ff3739;
+    background-color: white;
 }
+select{
+    margin-top: 3px !important;
+  }
 .nav_links{
     text-decoration: none;
-    color: white;
+    color: black;
     margin : 0.5em;
     font-size:medium;
     font-weight: 600;
@@ -38,7 +41,7 @@ nav{
     padding: 6px 25px;
     margin: 4px 10px 0;
     cursor: pointer;
-    color: aqua;
+    color: black;
     font-weight: bold;
     border: 1px solid #ed0000;
     box-sizing: border-box;
@@ -46,10 +49,10 @@ nav{
     background-color: transparent;
 }
 
-#logout, .sidenav button:nth-of-type(1){
+/* #logout, .sidenav button:nth-of-type(1){
     color: aqua;
     border: none;
-}
+} */
 
 .sidenav button:nth-of-type(0):hover{
     background-color: #ea000017;
@@ -98,7 +101,7 @@ nav{
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #ffffff;
+    background-color: #0c0c0c;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
   }
@@ -113,3 +116,4 @@ nav{
     flex-direction: row;
     gap: 8px;
   }
+
