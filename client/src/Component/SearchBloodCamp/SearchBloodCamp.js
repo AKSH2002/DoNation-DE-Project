@@ -48,7 +48,7 @@ const columns = [
 	{
 		id: 1,
 		field: "Organization_Name",
-		headerName: "Organization Name",
+		headerName: "Organization_Name",
 		width: 150,
 	  },
 	  { id: 2, field: "Organization_Type", headerName: "Organization_Type", width: 120 },
@@ -215,8 +215,7 @@ export default function SearchBloodCamp() {
 											/>
 										</LocalizationProvider>
 					</div>
-					<Button type="submit" variant="contained" sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} onClick={() => handleFilter()}
-					> 
+					<Button type="submit" variant="contained" sx={{ mt: 2, mb: 2, pl:4, pr:4, fontSize:'15px', fontWeight:'bold', backgroundColor:"#c6414c",':hover': {bgcolor: '#c6414c'} }} onClick={() => handleFilter()}> 
                         Search 
                         {seachSpinner && (<CircularProgress sx={{ml:2, color:'white'}} size={20}/>)}
                     </Button>

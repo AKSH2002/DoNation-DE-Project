@@ -1,24 +1,23 @@
 import { useQuery } from "@tanstack/react-query"
 import { useEffect, useState } from "react";
 
-export const useSearchHospitalHook = () => {
+export const useSearchBloodHook = () => {
   const [searchFor, setSearchFor] = useState({
-    state: "",
+    // bloodGroup: "",
     city: "",
     pincode: "",
-    // dateOfCamp:"",
   });
   
   const { data: originalData, isError, error, isLoading, refetch } = useQuery(['blood-camps-data'],async () => {
-    return fetch('http://localhost:8000/search-for-hospital').then(res => res.json())
+    return fetch('http://localhost:8000/search-for-user').then(res => res.json())
   })
   const [data, setData] = useState(originalData?.data ?? [])
 
       const handleFilter = () => {
         const filteredData = originalData?.data?.filter(item => {
-          if (searchFor?.state !== "" && item.State !== searchFor?.state) {
-            return false;
-          }
+          // if (searchFor?.bloodGroup !== "" && item.BloodGroup !== searchFor?.bloodGroup) {
+          //   return false;
+          // }
           if (searchFor?.city !== "" && item.City !== searchFor?.city) {
             return false;
           }
@@ -44,3 +43,29 @@ export const useSearchHospitalHook = () => {
     setSearchFor
   }
 }
+
+
+
+// import { useQuery } from "@tanstack/react-query"
+// import { useState } from "react";
+
+// export const useSearchBooldHook = () => {
+//   const [searchFor, setSearchFor] = useState({
+//     bloodGroup: "",
+//     city: "",
+//     pincode: "",
+//   });
+
+//     const { data, isError, error, isLoading, refetch } = useQuery(['blood-doners-data'],async () => {
+//         return fetch('http://localhost:8000/search-for-blood').then(res => res.json())
+//       })
+//   return {
+//     data,
+//     isError,
+//     error,
+//     isLoading,
+//     refetch,
+//     searchFor,
+//     setSearchFor
+//   }
+// }

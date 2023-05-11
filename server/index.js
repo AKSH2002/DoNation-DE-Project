@@ -138,6 +138,29 @@ app.get("/search-for-blood-camp", async (req,res) => {
   }
 });
 
+//Read(search) hospital Data
+app.get("/search-for-hospital", async (req,res) => {
+
+  try{
+    const hospitalRecord = await HospitalModel.find({});
+    res.send({ status:"ok", data:hospitalRecord});
+  }catch(error) {
+    console.log(error);
+  }
+});
+
+//Read(search) Blood donor Data
+app.get("/search-for-user", async (req,res) => {
+
+  try{
+    const userRecord = await UserModel.find({});
+    res.send({ status:"ok", data:userRecord});
+  }catch(error) {
+    console.log(error);
+  }
+});
+
+
 // //Update Data
 // app.put("/api/v1/bloodbank/:id", async (req, res) => {
 //     let bloodbank = await BloodBank.findById(req.params.id);
